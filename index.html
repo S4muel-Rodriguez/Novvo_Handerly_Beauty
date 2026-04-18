@@ -1775,6 +1775,108 @@
     </style>
 </head>
 <body>
+    <!-- SPLASH MODAL OBLIGATORIO - TÉRMINOS Y CONDICIONES -->
+    <div class="modal" id="splash-modal" style="display: flex; z-index: 2000;">
+        <div class="modal-content" style="max-width: 800px; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column;">
+            <div class="modal-header" style="border-bottom: 2px solid rgba(212, 175, 55, 0.3);">
+                <h2 id="modal-title" style="text-align: center;">TÉRMINOS, CONDICIONES Y POLÍTICA DE PRIVACIDAD</h2>
+            </div>
+            
+            <!-- TABS -->
+            <div style="display: flex; gap: 10px; padding: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 10, 10, 0.8); flex-wrap: wrap;">
+                <button class="tab-btn active" onclick="cambiarPestana('terminos-splash')" style="flex: 1; min-width: 150px; padding: 12px; background: rgba(212, 175, 55, 0.3); border: 2px solid var(--primary); color: var(--primary); border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s; font-size: 12px;">TÉRMINOS</button>
+                <button class="tab-btn" onclick="cambiarPestana('privacidad-splash')" style="flex: 1; min-width: 150px; padding: 12px; background: transparent; border: 2px solid rgba(212, 175, 55, 0.2); color: #aaa; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s; font-size: 12px;">PRIVACIDAD</button>
+                <button class="tab-btn" onclick="cambiarPestana('metodos-splash')" style="flex: 1; min-width: 150px; padding: 12px; background: transparent; border: 2px solid rgba(212, 175, 55, 0.2); color: #aaa; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s; font-size: 12px;">MÉTODOS DE PAGO</button>
+            </div>
+
+            <!-- CONTENIDO -->
+            <div style="flex: 1; overflow-y: auto; padding: 20px; color: #c0c0c0; font-size: 13px; line-height: 1.8;">
+                <!-- TAB 1: TÉRMINOS -->
+                <div id="terminos-splash" style="display: block;">
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">1. ACEPTACIÓN DE TÉRMINOS</h3>
+                    <p>Al acceder y utilizar el sitio web de NOVVO Handerly Beauty, aceptas estar vinculado por estos términos y condiciones.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">2. INFORMACIÓN DE PRODUCTOS</h3>
+                    <p>Todos nuestros productos son cosméticos profesionales certificados. Nos reservamos el derecho de actualizar información sin previo aviso.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">3. POLÍTICA DE PAGOS</h3>
+                    <p>Aceptamos: Mercado Pago, billeteras virtuales, transferencias bancarias y criptomonedas (USDC, BTC, XRP).</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">4. DIVISIÓN EQUITATIVA DE BENEFICIOS</h3>
+                    <p><strong>50%</strong> de los beneficios se destina a mejorar nuestros productos y servicios. <strong>50%</strong> beneficia directamente a nuestros clientes a través de mejores precios y promociones.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">5. COSTOS DE ENVÍO</h3>
+                    <p>Los costos de envío corren por cuenta del cliente y se informan al momento de la compra.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">6. POLÍTICA DE DEVOLUCIONES</h3>
+                    <p>Disponible dentro de 7 días de la compra. Productos deben estar en empaque original y sin usar.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">7. GARANTÍA DE PRODUCTOS</h3>
+                    <p>Garantizamos que todos nuestros productos son originales y certificados. Ofrecemos reemplazo o reembolso en caso de defecto de fabricación.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">8. CONTACTO Y NEGOCIACIÓN</h3>
+                    <p>Para consultas o problemas, contacta directamente con nuestro equipo por WhatsApp. Comprometemos atención personalizada y equitativa.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">9. LEY APLICABLE</h3>
+                    <p>Estos términos se rigen por las leyes de la República Argentina.</p>
+                </div>
+
+                <!-- TAB 2: PRIVACIDAD -->
+                <div id="privacidad-splash" style="display: none;">
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">PROTECCIÓN DE DATOS PERSONALES</h3>
+                    <p>NOVVO Handerly Beauty respeta tu privacidad. Recopilamos información personal solo cuando es necesario para procesar tu pedido y mejorar nuestros servicios.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">INFORMACIÓN QUE RECOPILAMOS</h3>
+                    <p>Recopilamos: nombre completo, dirección de entrega, teléfono, email y datos de pago. Esta información se utiliza para procesar pedidos, envíos y comunicarnos contigo.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">SEGURIDAD DE DATOS</h3>
+                    <p>Implementamos medidas de seguridad estrictas para proteger tu información personal. Todos los datos sensibles se transmiten de forma encriptada.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">COMPARTIR INFORMACIÓN</h3>
+                    <p>No compartimos tu información con terceros sin consentimiento, excepto con proveedores de envío y procesadores de pago cuando es requerido por ley.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">DERECHOS DEL USUARIO</h3>
+                    <p>Tienes derecho a acceder a tus datos personales, solicitar correcciones, solicitar eliminación de datos, y optar por no recibir comunicaciones de marketing.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">CAMBIOS EN ESTA POLÍTICA</h3>
+                    <p>Podemos actualizar esta Política de Privacidad en cualquier momento. El uso continuado del sitio implica tu aceptación de la política actualizada.</p>
+
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">CONTACTO</h3>
+                    <p><strong>novvohanderlybeauty@gmail.com</strong> o comunícate por WhatsApp con nuestro equipo.</p>
+                </div>
+
+                <!-- TAB 3: MÉTODOS DE PAGO -->
+                <div id="metodos-splash" style="display: none;">
+                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">💳 MERCADO PAGO</h3>
+                    <p><strong>Pago directo y seguro</strong> a través de Mercado Pago.</p>
+                    <p style="background: rgba(212, 175, 55, 0.1); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                        <strong>CVU Fundador (Guillermo):</strong><br>
+                        0000003100082779103094<br><br>
+                        <strong>CVU CEO (Camila):</strong><br>
+                        0000003100061640122042<br><br>
+                        <strong>Alias Administrativo:</strong><br>
+                        RO20471444015.NX.ARS (Naranja X)
+                    </p>
+
+                    <h3 style="color: var(--primary); margin: 20px 0 10px 0;">₿ CRIPTOMONEDAS</h3>
+                    <p><strong>Aceptamos:</strong> USDC, Bitcoin (BTC), XRP</p>
+                    <p style="background: rgba(29, 181, 132, 0.1); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                        <strong>⚠️ Importante:</strong> Para pagos en criptomonedas, contacta directamente a nuestro equipo por WhatsApp. Te proporcionaremos la dirección de la billetera de blockchain de forma segura.
+                    </p>
+
+                    <h3 style="color: var(--primary); margin: 20px 0 10px 0;">📞 ¿Necesitas ayuda?</h3>
+                    <p>Contáctanos por WhatsApp con el Fundador, CEO o Área Administrativa. Están disponibles para resolver cualquier duda sobre pagos.</p>
+                </div>
+            </div>
+
+            <!-- BOTONES DE ACCIÓN -->
+            <div style="padding: 20px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 10, 10, 0.8); display: flex; gap: 15px;">
+                <button class="btn-secondary" onclick="rechazarTerminos()" style="flex: 1;">NO ACEPTO - SALIR DEL SITIO</button>
+                <button class="btn-primary" onclick="aceptarSplashTerminos()" style="flex: 1;">ACEPTO TÉRMINOS Y POLÍTICA</button>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header>
         <div class="header-content">
@@ -1791,6 +1893,7 @@
                 <a onclick="document.getElementById('galeria').scrollIntoView({behavior: 'smooth'})">FOTOS</a>
                 <a onclick="document.getElementById('videos').scrollIntoView({behavior: 'smooth'})">VIDEOS</a>
                 <a onclick="document.getElementById('testimonios').scrollIntoView({behavior: 'smooth'})">TESTIMONIOS</a>
+                <a onclick="document.getElementById('metodos-pago').scrollIntoView({behavior: 'smooth'})">PAGOS</a>
                 <a onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">CONTACTO</a>
             </nav>
             <div class="header-actions">
@@ -1827,6 +1930,23 @@
                 <div class="auth-toggle">
                     ¿No tienes cuenta? <a onclick="toggleForm()">Regístrate aquí</a>
                 </div>
+                <div class="auth-toggle" style="margin-top: 15px;">
+                    ¿Olvidaste tu contraseña? <a onclick="mostrarRecuperarContrasena()">Recuperarla aquí</a>
+                </div>
+            </form>
+
+            <!-- RECUPERAR CONTRASEÑA FORM -->
+            <form class="auth-form" id="recover-form" onsubmit="handleRecuperarContrasena(event)" style="display: none;">
+                <h3 style="text-align: center; color: var(--primary); margin-bottom: 20px;">Recuperar Contraseña</h3>
+                <p style="text-align: center; color: #aaa; font-size: 13px; margin-bottom: 20px;">Ingresa tu email registrado y te enviaremos instrucciones para recuperar tu contraseña.</p>
+                <div class="form-group">
+                    <label>Email Registrado</label>
+                    <input type="email" id="recover-email" placeholder="tu@email.com" required>
+                </div>
+                <button type="submit" class="btn-auth">ENVIAR INSTRUCCIONES</button>
+                <div class="auth-toggle" style="margin-top: 20px;">
+                    <a onclick="mostrarLoginForm()">Volver a Iniciar Sesión</a>
+                </div>
             </form>
 
             <!-- REGISTRO FORM -->
@@ -1847,6 +1967,10 @@
                     <label>Confirmar Contraseña</label>
                     <input type="password" id="register-confirm" placeholder="Confirmar contraseña" required>
                 </div>
+                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="accept-terms" required>
+                    <label style="margin: 0; font-size: 13px;">Aceptar <a onclick="mostrarTerminosModal()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Términos y Condiciones</a> y <a onclick="mostrarPoliticaModal()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Política de Privacidad</a></label>
+                </div>
                 <button type="submit" class="btn-auth">CREAR CUENTA</button>
 
                 <div class="divider"><span>O</span></div>
@@ -1857,6 +1981,84 @@
                     ¿Ya tienes cuenta? <a onclick="toggleForm()">Inicia sesión aquí</a>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- MODAL TÉRMINOS Y CONDICIONES COMPLETO -->
+    <div class="modal" id="terminos-modal" style="display: none; z-index: 1001;">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto; max-width: 700px;">
+            <div class="modal-header">
+                <h2 id="modal-title-terminos" style="font-size: 24px;">Términos y Condiciones</h2>
+                <button class="close-modal" onclick="document.getElementById('terminos-modal').style.display='none'">✕</button>
+            </div>
+            <div style="padding: 20px; color: #c0c0c0; font-size: 13px; line-height: 1.8;">
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">1. Aceptación de Términos</h3>
+                <p>Al acceder y utilizar el sitio web de NOVVO Handerly Beauty, aceptas estar vinculado por estos términos y condiciones. Si no estás de acuerdo con alguna parte, no podrás utilizar nuestros servicios.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">2. Información de Productos</h3>
+                <p>Todos nuestros productos son cosméticos profesionales certificados. La información es precisa a la fecha de publicación. Nos reservamos el derecho de actualizar información sin previo aviso.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">3. Política de Pagos</h3>
+                <p>Aceptamos: Mercado Pago, billeteras virtuales, transferencias bancarias y criptomonedas (USDC, BTC, XRP). Todos los pagos deben completarse antes de procesar el pedido.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">4. División de Beneficios (50/50)</h3>
+                <p>50% de los beneficios se destina a mejorar nuestros productos y servicios. 50% beneficia directamente a nuestros clientes a través de mejores precios y promociones.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">5. Costos de Envío</h3>
+                <p>Los costos de envío corren por cuenta del cliente y se informan al momento de la compra. La responsabilidad del producto pasa al cliente una vez retirado del almacén.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">6. Política de Devoluciones</h3>
+                <p>Disponible dentro de 7 días de la compra. Productos deben estar en empaque original y sin usar. Los costos de envío de devolución corren por cuenta del cliente.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">7. Garantía de Productos</h3>
+                <p>Garantizamos que todos nuestros productos son originales y certificados. Ofrecemos reemplazo o reembolso en caso de defecto de fabricación.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">8. Contacto y Negociación</h3>
+                <p>Para consultas o problemas, contacta directamente con nuestro equipo por WhatsApp. Comprometemos atención personalizada y equitativa para resolver cualquier situación.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">9. Ley Aplicable</h3>
+                <p>Estos términos se rigen por las leyes de la República Argentina. Las partes aceptan la jurisdicción exclusiva de los tribunales argentinos.</p>
+
+                <div style="margin-top: 30px; padding: 20px; background: rgba(212, 175, 55, 0.1); border-radius: 10px; text-align: center;">
+                    <button class="btn-auth" onclick="aceptarTerminosYContinuar()" style="width: 100%;">ACEPTO ESTOS TÉRMINOS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POLÍTICA DE PRIVACIDAD -->
+    <div class="modal" id="privacidad-modal" style="display: none; z-index: 1001;">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto; max-width: 700px;">
+            <div class="modal-header">
+                <h2 style="font-size: 24px;">Política de Privacidad</h2>
+                <button class="close-modal" onclick="document.getElementById('privacidad-modal').style.display='none'">✕</button>
+            </div>
+            <div style="padding: 20px; color: #c0c0c0; font-size: 13px; line-height: 1.8;">
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">Protección de Datos Personales</h3>
+                <p>NOVVO Handerly Beauty respeta tu privacidad. Recopilamos información personal solo cuando es necesario para procesar tu pedido, contactarte o mejorar nuestros servicios. Cumplimos con las leyes de protección de datos vigentes en Argentina.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">Información Que Recopilamos</h3>
+                <p>Recopilamos: nombre completo, dirección de entrega, número de teléfono, email y datos de pago. Esta información se utiliza exclusivamente para procesar pedidos, envíos y comunicarnos contigo.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">Seguridad de Datos</h3>
+                <p>Implementamos medidas de seguridad estrictas para proteger tu información personal. Todos los datos sensibles se transmiten de forma encriptada.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">Compartir Información</h3>
+                <p>No compartimos tu información con terceros sin consentimiento, excepto con proveedores de envío para entregar tu pedido y procesadores de pago para transacciones.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">Derechos del Usuario</h3>
+                <p>Tienes derecho a acceder a tus datos personales, solicitar correcciones, solicitar la eliminación de datos, y optar por no recibir comunicaciones de marketing.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">Cambios en esta Política</h3>
+                <p>Podemos actualizar esta Política de Privacidad en cualquier momento. El uso continuado del sitio implica tu aceptación de la política actualizada.</p>
+
+                <h3 style="color: var(--primary); margin-top: 20px; margin-bottom: 10px;">Contacto</h3>
+                <p>Para preguntas: <strong>novvohanderlybeauty@gmail.com</strong> o comunícate por WhatsApp con nuestro equipo.</p>
+
+                <div style="margin-top: 30px; padding: 20px; background: rgba(212, 175, 55, 0.1); border-radius: 10px; text-align: center;">
+                    <button class="btn-auth" onclick="document.getElementById('privacidad-modal').style.display='none'; document.getElementById('accept-terms').checked=true;" style="width: 100%;">ACEPTO ESTA POLÍTICA</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2069,25 +2271,25 @@
         
         <div class="galeria-grid" style="grid-template-columns: repeat(3, 1fr);">
             <div class="galeria-item" style="aspect-ratio: auto;">
-                <video width="100%" height="100%" style="object-fit: cover; border-radius: 12px;" controls>
+                <video width="100%" height="auto" style="object-fit: cover; border-radius: 12px;" controls preload="metadata" crossorigin="anonymous">
                     <source src="img/MOVIE.mp4" type="video/mp4">
                     Tu navegador no soporta video HTML5.
                 </video>
             </div>
             <div class="galeria-item" style="aspect-ratio: auto;">
-                <video width="100%" height="100%" style="object-fit: cover; border-radius: 12px;" controls>
+                <video width="100%" height="auto" style="object-fit: cover; border-radius: 12px;" controls preload="metadata" crossorigin="anonymous">
                     <source src="img/video%20de%20productos.mp4" type="video/mp4">
                     Tu navegador no soporta video HTML5.
                 </video>
             </div>
             <div class="galeria-item" style="aspect-ratio: auto;">
-                <video width="100%" height="100%" style="object-fit: cover; border-radius: 12px;" controls>
+                <video width="100%" height="auto" style="object-fit: cover; border-radius: 12px;" controls preload="metadata" crossorigin="anonymous">
                     <source src="img/VID_20220228_095320216.mp4" type="video/mp4">
                     Tu navegador no soporta video HTML5.
                 </video>
             </div>
         </div>
-    </section>
+    </section> 
 
     <!-- TESTIMONIOS SECTION -->
     <section class="testimonios" id="testimonios">
@@ -2319,67 +2521,6 @@
         </div>
     </section>
 
-    <!-- MÉTODOS DE PAGO SECTION -->
-    <section class="metodos-pago" id="metodos-pago">
-        <div class="container">
-            <h2 class="section-title">Métodos de Pago Seguros</h2>
-            <span class="section-label">FORMAS DE PAGAR</span>
-
-            <div class="metodos-grid">
-                <div class="metodo-card">
-                    <div class="metodo-icon">💳</div>
-                    <h3>Mercado Pago</h3>
-                    <p>Paga con tu tarjeta, transferencia bancaria o billetera virtual de forma segura y rápida.</p>
-                    <button class="btn-secondary" onclick="mostrarOpcionesMercadoPago()">Ver Opciones</button>
-                </div>
-
-                <div class="metodo-card">
-                    <div class="metodo-icon">🏦</div>
-                    <h3>Transferencia Bancaria</h3>
-                    <p>Realiza una transferencia directa a nuestra cuenta bancaria verificada.</p>
-                    <button class="btn-secondary" onclick="mostrarInformacionBancaria()">Datos Bancarios</button>
-                </div>
-
-                <div class="metodo-card">
-                    <div class="metodo-icon">₿</div>
-                    <h3>Criptomonedas</h3>
-                    <p>Aceptamos USDC, BTC y XRP para mayor seguridad y privacidad.</p>
-                    <button class="btn-secondary" onclick="mostrarModalCripto()">Ver Direcciones</button>
-                </div>
-            </div>
-
-            <!-- Mercado Pago Options -->
-            <div id="mercadopagoOptions" class="opciones-container" style="display: none; margin-top: 50px;">
-                <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">CVUs Mercado Pago</h3>
-                <div class="cvus-grid">
-                    <div class="cvu-card">
-                        <h4>Fundador - Guillermo Carlos Rodriguez</h4>
-                        <p class="cvu-number">CVU: 0000003100082779103094</p>
-                        <p class="cvu-label">Mercado Pago</p>
-                        <button class="btn-primary" onclick="copiarAlPortapapeles('0000003100082779103094', 'CVU copiado')">Copiar CVU</button>
-                        <a href="https://mpago.la/0000003100082779103094" target="_blank" class="btn-primary" style="display: inline-block; margin-top: 10px; text-decoration: none; text-align: center;">Pagar Ahora</a>
-                    </div>
-
-                    <div class="cvu-card">
-                        <h4>CEO - Camila Anahi Rodriguez Garay</h4>
-                        <p class="cvu-number">CVU: 0000003100061640122042</p>
-                        <p class="cvu-label">Mercado Pago</p>
-                        <button class="btn-primary" onclick="copiarAlPortapapeles('0000003100061640122042', 'CVU copiado')">Copiar CVU</button>
-                        <a href="https://mpago.la/0000003100061640122042" target="_blank" class="btn-primary" style="display: inline-block; margin-top: 10px; text-decoration: none; text-align: center;">Pagar Ahora</a>
-                    </div>
-
-                    <div class="cvu-card">
-                        <h4>Administrativo</h4>
-                        <p class="cvu-number">Alias: RO20471444015.NX.ARS</p>
-                        <p class="cvu-label">Naranja X</p>
-                        <button class="btn-primary" onclick="copiarAlPortapapeles('RO20471444015.NX.ARS', 'Alias copiado')">Copiar Alias</button>
-                    </div>
-                </div>
-                <button class="btn-secondary" onclick="ocultarOpcionesMercadoPago()" style="display: block; margin: 30px auto;">Cerrar</button>
-            </div>
-        </div>
-    </section>
-
     <!-- TÉRMINOS Y CONDICIONES SECTION -->
     <section class="terminos-section" id="terminos">
         <div class="container">
@@ -2567,8 +2708,101 @@
             }
         }
 
-        // Inicializar
+        // SPLASH MODAL - TÉRMINOS Y CONDICIONES
+        function cambiarPestana(pestaña) {
+            // Ocultar todas las pestañas
+            document.getElementById('terminos-splash').style.display = 'none';
+            document.getElementById('privacidad-splash').style.display = 'none';
+
+            // Mostrar la seleccionada
+            document.getElementById(pestaña).style.display = 'block';
+
+            // Cambiar estilos de botones
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.style.background = 'transparent';
+                btn.style.borderColor = 'rgba(212, 175, 55, 0.2)';
+                btn.style.color = '#aaa';
+            });
+            event.target.style.background = 'rgba(212, 175, 55, 0.3)';
+            event.target.style.borderColor = 'var(--primary)';
+            event.target.style.color = 'var(--primary)';
+        }
+
+        function aceptarSplashTerminos() {
+            localStorage.setItem('aceptoTerminos', 'true');
+            document.getElementById('splash-modal').style.display = 'none';
+        }
+
+        function rechazarTerminos() {
+            alert('Debes aceptar los Términos y Condiciones y Política de Privacidad para continuar usando el sitio.');
+            window.location.href = 'about:blank';
+        }
+
+        // RECUPERAR CONTRASEÑA MEJORADO
+        function handleRecuperarContrasena(e) {
+            e.preventDefault();
+            const email = document.getElementById('recover-email').value;
+
+            const usuario = usuariosRegistrados.find(u => u.email === email);
+            if (!usuario) {
+                alert('No encontramos una cuenta con ese email. Verifica y vuelve a intentar.');
+                return;
+            }
+
+            // Generar nueva contraseña aleatoria
+            const nuevaContrasena = generarContraseña();
+            usuario.password = nuevaContrasena;
+            usuariosRegistrados = usuariosRegistrados.map(u => u.email === email ? usuario : u);
+            localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
+
+            const mensaje = `RECUPERACIÓN DE CONTRASEÑA - NOVVO HANDERLY BEAUTY
+
+Hola ${usuario.nombre},
+
+Hemos recibido una solicitud para recuperar tu contraseña. Tu nueva contraseña temporal es:
+
+🔐 CONTRASEÑA TEMPORAL: ${nuevaContrasena}
+
+Pasos para recuperar tu acceso:
+1. Ve a https://www.novvo.com.ar (o abre nuestro sitio)
+2. Haz clic en "Iniciar Sesión"
+3. Ingresa tu email: ${email}
+4. Ingresa esta contraseña temporal: ${nuevaContrasena}
+5. Una vez logueado, puedes cambiar tu contraseña en tu perfil
+
+IMPORTANTE: Esta contraseña expira en 24 horas. Si no fue tu solicitud, ignora este email.
+
+Saludos,
+NOVVO Handerly Beauty Team
+Fecha: ${new Date().toLocaleString()}`;
+            
+            enviarPorEmail(mensaje, 'Recuperación de Contraseña');
+            
+            alert(`✓ Email de recuperación enviado a ${email}\\n\\nTienes una contraseña temporal válida por 24 horas.\\n\\nRevisa tu bandeja de entrada (o spam).`);
+            mostrarLoginForm();
+            document.getElementById('recover-email').value = '';
+            closeLoginModal();
+        }
+
+        function generarContrasena(length = 12) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return password;
+        }
+
+        // INICIALIZAR SPLASH MODAL
         document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si ya aceptó términos
+            const aceptoTerminos = localStorage.getItem('aceptoTerminos');
+            if (!aceptoTerminos) {
+                document.getElementById('splash-modal').style.display = 'flex';
+            } else {
+                document.getElementById('splash-modal').style.display = 'none';
+            }
+
             verificarSesion();
             setupStarRating();
             setupSliderDots();
@@ -2637,6 +2871,12 @@
             const email = document.getElementById('register-email').value;
             const password = document.getElementById('register-password').value;
             const confirm = document.getElementById('register-confirm').value;
+            const acceptTerms = document.getElementById('accept-terms').checked;
+
+            if (!acceptTerms) {
+                alert('Debes aceptar los Términos y Condiciones y Política de Privacidad para registrarte.');
+                return;
+            }
 
             if (password !== confirm) {
                 alert('Las contraseñas no coinciden');
@@ -2653,7 +2893,8 @@
                 nombre: name,
                 email: email,
                 password: password,
-                fechaRegistro: new Date().toLocaleDateString()
+                fechaRegistro: new Date().toLocaleDateString(),
+                aceptoTerminos: true
             };
 
             usuariosRegistrados.push(nuevoUsuario);
@@ -2802,6 +3043,12 @@ Fecha: ${new Date().toLocaleDateString()}`;
 
         // ENVIAR CONSULTA
         function enviarConsulta() {
+            if (!currentUser) {
+                alert('Debes iniciar sesión o registrarte para enviar una consulta.');
+                openLoginModal();
+                return;
+            }
+
             const nombre = document.getElementById('form-nombre').value;
             const email = document.getElementById('form-email').value;
             const mensaje = document.getElementById('form-mensaje').value;
@@ -2817,7 +3064,7 @@ Fecha: ${new Date().toLocaleDateString()}`;
                 return;
             }
 
-            const usuarioInfo = currentUser ? `Usuario: ${currentUser.nombre}` : 'Usuario: No registrado';
+            const usuarioInfo = `Usuario Registrado: ${currentUser.nombre} (${currentUser.email})`;
             const consultaMensaje = `NUEVA CONSULTA:
 
 ${usuarioInfo}
@@ -2828,7 +3075,7 @@ Fecha: ${new Date().toLocaleString()}`;
 
             enviarPorEmail(consultaMensaje, 'Nueva Consulta');
             
-            alert(`¡Gracias ${nombre}! Tu consulta ha sido enviada. Nos contactaremos a ${email} pronto.`);
+            alert(`¡Gracias ${nombre}! Tu consulta ha sido enviada. Nos contactaremos pronto.`);
             document.getElementById('form-nombre').value = '';
             document.getElementById('form-email').value = '';
             document.getElementById('form-mensaje').value = '';
@@ -2838,7 +3085,7 @@ Fecha: ${new Date().toLocaleString()}`;
         function enviarPorEmail(mensaje, tipo) {
             const form = document.createElement('form');
             form.method = 'POST';
-            form.action = 'https://formspree.io/f/xvgnwqvl'; // Reemplazar con tu ID de FormSpree
+            form.action = 'https://formspree.io/f/mbjbqzlb'; // Email: samurodriguez565@gmail.com
             
             const input = document.createElement('input');
             input.type = 'hidden';
@@ -2890,6 +3137,53 @@ Fecha: ${new Date().toLocaleString()}`;
 
         function mostrarModalCripto() {
             alert(`CRIPTOMONEDAS ACEPTADAS:\n\n₿ BITCOIN (BTC)\n₳ XRP\n💵 USDC (USD Coin)\n\nLas direcciones de billetera se comparten de forma segura por WhatsApp.\n\nContacta a nuestro equipo:\nhttps://wa.me/5491156294134`);
+        }
+
+        // RECUPERAR CONTRASEÑA
+        function mostrarRecuperarContrasena() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('recover-form').style.display = 'block';
+        }
+
+        function mostrarLoginForm() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('recover-form').style.display = 'none';
+        }
+
+        function handleRecuperarContrasena(e) {
+            e.preventDefault();
+            const email = document.getElementById('recover-email').value;
+
+            const usuario = usuariosRegistrados.find(u => u.email === email);
+            if (!usuario) {
+                alert('No encontramos una cuenta con ese email. Verifica y vuelve a intentar.');
+                return;
+            }
+
+            const mensaje = `SOLICITUD DE RECUPERACIÓN DE CONTRASEÑA:\n\nEmail: ${email}\nContraseña registrada: ${usuario.password}\n\nFecha de solicitud: ${new Date().toLocaleString()}`;
+            
+            enviarPorEmail(mensaje, 'Recuperación de Contraseña');
+            
+            alert(`Hemos enviado instrucciones de recuperación a ${email}. Por favor, revisa tu bandeja de entrada.`);
+            mostrarLoginForm();
+            document.getElementById('recover-email').value = '';
+            closeLoginModal();
+        }
+
+        // TÉRMINOS Y CONDICIONES
+        function mostrarTerminosModal() {
+            document.getElementById('terminos-modal').style.display = 'flex';
+        }
+
+        function mostrarPoliticaModal() {
+            document.getElementById('privacidad-modal').style.display = 'flex';
+        }
+
+        function aceptarTerminosYContinuar() {
+            document.getElementById('accept-terms').checked = true;
+            document.getElementById('terminos-modal').style.display = 'none';
         }
 
         // SLIDER

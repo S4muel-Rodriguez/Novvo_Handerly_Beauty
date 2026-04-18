@@ -1,0 +1,52 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    CREDENCIALES DE PRUEBA - NOVVO HANDERLY BEAUTY
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 USA ESTAS CREDENCIALES PARA PROBAR EL SITIO:
+
+Email:      prueba@novvo.com
+Contraseña: Novvo123
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ QUÉ PUEDES PROBAR:
+
+1. Iniciar Sesión
+   - Haz clic en el botón "Iniciar Sesión"
+   - Usa las credenciales arriba
+   - Tu foto de perfil aparecerá en el header
+
+2. Dejar Testimonios
+   - Ve a la sección "TESTIMONIOS"
+   - Haz clic en "Deja tu opinión"
+   - Tu foto aparecerá automáticamente en tu testimonio
+
+3. Enviar Consultas
+   - Ve a la sección "CONTACTO"
+   - Envía un mensaje de consulta
+   - Tu información se guardará
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔐 NOTAS:
+
+- Estas son credenciales DE PRUEBA para desarrollo
+- En PRODUCCIÓN, configura Google OAuth real
+- Sigue INSTRUCCIONES_GOOGLE_OAUTH.md para Google OAuth
+
+═══════════════════════════════════════════════════════════════════════════════
+
+❌ ¿Olvidaste la contraseña?
+
+No hay recuperación en el modo de prueba.
+Usa siempre: prueba@novvo.com / Novvo123
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Para migrar a Google OAuth:
+1. Lee: INSTRUCCIONES_GOOGLE_OAUTH.md
+2. Sigue los pasos de Google Cloud Console
+3. Reemplaza el Client ID en el HTML
+4. ¡Listo!
+
+═══════════════════════════════════════════════════════════════════════════════

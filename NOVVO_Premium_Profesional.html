@@ -1,0 +1,2953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NOVVO Handerly Beauty - Cosméticos capilares premium con resultados de salón profesional">
+    <meta property="og:title" content="NOVVO Handerly Beauty">
+    <meta property="og:description" content="Productos profesionales para cabello - Alisado, reparación profunda y brillo extremo">
+    <meta property="og:type" content="website">
+    <title>NOVVO Handerly Beauty - Cosméticos Capilares Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D4AF37;
+            --dark: #0a0a0a;
+            --darker: #1a1a1a;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --text: #e0e0e0;
+            --accent: #1db584;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo animado */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(29, 181, 132, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HEADER Y NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--text);
+            margin-top: 3px;
+            font-weight: 400;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .btn-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(29, 181, 132, 0.3);
+        }
+
+        .btn-login {
+            background: var(--primary);
+            color: var(--dark);
+            padding: 10px 25px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* MODAL LOGIN/REGISTRO */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 50px 40px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1);
+            animation: slideIn 0.3s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--primary);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input::placeholder {
+            color: #555;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-auth {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, #c9a827 100%);
+            color: var(--dark);
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-auth:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-auth:active {
+            transform: translateY(-1px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #666;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .divider span {
+            margin: 0 20px;
+            font-size: 13px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .btn-google {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(29, 181, 132, 0.1) 0%, rgba(29, 181, 132, 0.05) 100%);
+            color: var(--accent);
+            padding: 14px;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-google:hover {
+            background: linear-gradient(135deg, rgba(29, 181, 132, 0.2) 0%, rgba(29, 181, 132, 0.1) 100%);
+            box-shadow: 0 8px 25px rgba(29, 181, 132, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-google:active {
+            transform: translateY(0);
+        }
+
+        .auth-toggle {
+            text-align: center;
+            margin-top: 25px;
+            color: #999;
+            font-size: 13px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .auth-toggle a {
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .auth-toggle a:hover {
+            text-decoration: underline;
+            color: #e8c547;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 100px;
+            padding: 100px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 600px;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: white;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--primary);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            background: rgba(212, 175, 55, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-description {
+            color: #aaa;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #c9a827 100%);
+            color: var(--dark);
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 14px 40px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 550px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 40px;
+            letter-spacing: 1px;
+            grid-column: 1/-1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* STATS SECTION */
+        .stats {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.8) 100%);
+            padding: 80px 40px;
+            margin-top: 100px;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stats-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: white;
+        }
+
+        .stats-title .highlight {
+            color: var(--primary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 30px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(29, 181, 132, 0.08) 100%);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        /* SOLUCIONES SECTION */
+        .soluciones {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            margin-bottom: 60px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .soluciones-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .solucion-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .solucion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+            z-index: 1;
+        }
+
+        .solucion-card:hover::before {
+            left: 100%;
+        }
+
+        .solucion-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
+        }
+
+        .solucion-image {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .solucion-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .solucion-card:hover .solucion-image img {
+            transform: scale(1.1);
+        }
+
+        .solucion-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .solucion-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .solucion-tag {
+            color: var(--primary);
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 600;
+        }
+
+        /* PRODUCTOS SECTION */
+        .productos {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .producto-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .producto-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
+        }
+
+        .producto-image {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .producto-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .producto-card:hover .producto-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, #c9a827 100%);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .producto-content {
+            padding: 30px;
+        }
+
+        .producto-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .producto-desc {
+            color: #aaa;
+            font-size: 13px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn-comprar {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-comprar:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* RESULTADOS SECTION */
+        .resultados {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .resultados .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .resultados-slider {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .before-after-item {
+            position: relative;
+        }
+
+        .before-after-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, rgba(212, 175, 55, 0.8) 100%);
+            color: var(--dark);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .before-after-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .before-after-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.5);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        /* GALERÍA SECTION */
+        .galeria {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .galeria .section-title {
+            margin-bottom: 60px;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .galeria-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .galeria-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+        }
+
+        .galeria-item:hover::before {
+            opacity: 1;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .galeria-item:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* TESTIMONIOS SECTION */
+        .testimonios {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonios .section-title {
+            margin-bottom: 60px;
+        }
+
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .testimonio-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 35px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonio-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(212, 175, 55, 0.2);
+            font-family: 'Playfair Display', serif;
+            z-index: 0;
+        }
+
+        .testimonio-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .testimonio-stars {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonio-text {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonio-autor {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonio-form {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            grid-column: 1/-1;
+        }
+
+        .testimonio-form h3 {
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(212, 175, 55, 0.05);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            font-size: 32px;
+            cursor: pointer;
+            color: rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+        }
+
+        .star:hover,
+        .star.active {
+            color: var(--primary);
+            transform: scale(1.2);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-enviar-testimonio {
+            background: linear-gradient(135deg, var(--primary) 0%, #c9a827 100%);
+            color: var(--dark);
+            padding: 12px 40px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-enviar-testimonio:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* SOBRE NOSOTROS */
+        .sobre-nosotros {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sobre-nosotros-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .sobre-nosotros-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .sobre-nosotros-text p {
+            color: #aaa;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .sobre-nosotros-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+        }
+
+        .sobre-nosotros-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* TARIFAS */
+        .tarifas {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tarifas-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .tarifas-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .tarifas-content p {
+            color: #aaa;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tarifa-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            color: white;
+            font-weight: 500;
+        }
+
+        .tarifa-item:hover {
+            color: var(--primary);
+        }
+
+        .tarifas-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+        }
+
+        .tarifas-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contacto-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .contacto-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .contacto-header p {
+            color: #aaa;
+            font-size: 16px;
+        }
+
+        .contacto-opciones {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .opcion-btn {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-direction: column;
+        }
+
+        .opcion-btn:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(29, 181, 132, 0.08) 100%);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .opcion-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, #c9a827 100%);
+            color: var(--dark);
+            border-color: var(--primary);
+        }
+
+        .opcion-icon {
+            font-size: 32px;
+        }
+
+        .contacto-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(29, 181, 132, 0.05) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+        }
+
+        .form-column h3 {
+            color: var(--primary);
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            color: #aaa;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .contact-info a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .contact-line {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .contact-line-icon {
+            color: var(--primary);
+            margin-top: 2px;
+        }
+
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+        }
+
+        .social-icon {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .form-submit {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--primary) 0%, #c9a827 100%);
+            color: var(--dark);
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* MÉTODOS DE PAGO */
+        .metodos-pago {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(29, 181, 132, 0.05) 100%);
+        }
+
+        .metodos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .metodo-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .metodo-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+        }
+
+        .metodo-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .metodo-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .metodo-card p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .opciones-container {
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cvus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .cvu-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .cvu-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .cvu-card h4 {
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .cvu-number {
+            font-size: 13px;
+            color: #e0e0e0;
+            font-weight: 600;
+            word-break: break-all;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .cvu-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        /* TÉRMINOS Y CONDICIONES */
+        .terminos-section,
+        .politica-section {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(29, 181, 132, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+        }
+
+        .politicas-content {
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .politica-item {
+            background: rgba(26, 26, 26, 0.6);
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .politica-item:hover {
+            background: rgba(26, 26, 26, 0.8);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+            transform: translateX(5px);
+        }
+
+        .politica-item h3 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .politica-item p {
+            color: #c0c0c0;
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            padding: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .soluciones-grid,
+            .productos-grid,
+            .testimonios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+
+            nav a {
+                text-align: center;
+            }
+
+            .hero {
+                padding: 60px 20px;
+                margin-top: 200px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .soluciones,
+            .productos,
+            .resultados,
+            .galeria,
+            .contacto,
+            .sobre-nosotros,
+            .tarifas,
+            .testimonios {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contacto-form {
+                grid-template-columns: 1fr;
+            }
+
+            .contacto-opciones {
+                grid-template-columns: 1fr;
+            }
+
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+
+            .sobre-nosotros-content,
+            .tarifas-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* USER STATUS */
+        .user-status {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .logout-btn {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .user-profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+        }
+
+        .testimonio-profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo" onclick="document.getElementById('inicio').scrollIntoView({behavior: 'smooth'})">
+                NOVVO
+                <div class="logo-text">
+                    <span>HANDERLY BEAUTY</span>
+                </div>
+            </div>
+            <nav>
+                <a onclick="document.getElementById('inicio').scrollIntoView({behavior: 'smooth'})">INICIO</a>
+                <a onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">PRODUCTOS</a>
+                <a onclick="document.getElementById('resultados').scrollIntoView({behavior: 'smooth'})">RESULTADOS</a>
+                <a onclick="document.getElementById('galeria').scrollIntoView({behavior: 'smooth'})">FOTOS</a>
+                <a onclick="document.getElementById('videos').scrollIntoView({behavior: 'smooth'})">VIDEOS</a>
+                <a onclick="document.getElementById('testimonios').scrollIntoView({behavior: 'smooth'})">TESTIMONIOS</a>
+                <a onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">CONTACTO</a>
+            </nav>
+            <div class="header-actions">
+                <div id="user-display"></div>
+                <button class="btn-login" id="login-btn" onclick="openLoginModal()">Iniciar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MODAL LOGIN/REGISTRO -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Iniciar Sesión</h2>
+                <button class="close-modal" onclick="closeLoginModal()">✕</button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form class="auth-form active" id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="login-password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="btn-auth">INICIAR SESIÓN</button>
+
+                <div class="divider"><span>O</span></div>
+
+                <div id="google_signin_login" style="display: flex; justify-content: center;"></div>
+
+                <div class="auth-toggle">
+                    ¿No tienes cuenta? <a onclick="toggleForm()">Regístrate aquí</a>
+                </div>
+            </form>
+
+            <!-- REGISTRO FORM -->
+            <form class="auth-form" id="register-form" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="register-name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="register-email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="register-password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirmar Contraseña</label>
+                    <input type="password" id="register-confirm" placeholder="Confirmar contraseña" required>
+                </div>
+                <button type="submit" class="btn-auth">CREAR CUENTA</button>
+
+                <div class="divider"><span>O</span></div>
+
+                <div id="google_signin_register" style="display: flex; justify-content: center;"></div>
+
+                <div class="auth-toggle">
+                    ¿Ya tienes cuenta? <a onclick="toggleForm()">Inicia sesión aquí</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="badge">COSMÉTICOS CAPILARES PREMIUM</div>
+            <h1>Transformá tu cabello <span class="highlight">con tecnología profesional</span></h1>
+            <p class="hero-description">
+                Alisado, reparación profunda y brillo extremo. Resultados de salón con productos originales certificados.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Ver Productos</button>
+                <button class="btn-secondary" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">Solicitar Información</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="img/fondo.webp" alt="Cabello profesional NOVVO" loading="lazy">
+        </div>
+        <div class="scroll-indicator">↓ DESCUBRÍ ↓</div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats">
+        <div class="stats-container">
+            <h2 class="stats-title">Resultados de salón con <span class="highlight">productos originales certificados</span></h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">CLIENTES SATISFECHOS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">AÑOS DE EXPERIENCIA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">INGREDIENTES CERTIFICADOS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0%</div>
+                    <div class="stat-label">FORMOL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIONES SECTION -->
+    <section class="soluciones">
+        <span class="section-label">SOLUCIONES ESPECÍFICAS</span>
+        <h2 class="section-title">El tratamiento exacto para cada necesidad</h2>
+        
+        <div class="soluciones-grid">
+            <div class="solucion-card">
+                <div class="solucion-image">
+                    <img src="img/IMG-20211101-WA0077~2.jpg" alt="Cabello Dañado" loading="lazy">
+                </div>
+                <div class="solucion-content">
+                    <h3>Cabello Dañado / Decolorado</h3>
+                    <span class="solucion-tag">Botox Microkeratine</span>
+                </div>
+            </div>
+
+            <div class="solucion-card">
+                <div class="solucion-image">
+                    <img src="img/IMG-20211101-WA0028.jpg" alt="Alisado Profesional" loading="lazy">
+                </div>
+                <div class="solucion-content">
+                    <h3>Alisado Profesional</h3>
+                    <span class="solucion-tag">Alisado Plastificado</span>
+                </div>
+            </div>
+
+            <div class="solucion-card">
+                <div class="solucion-image">
+                    <img src="img/IMG-20241005-WA0013.jpg" alt="Mantenimiento" loading="lazy">
+                </div>
+                <div class="solucion-content">
+                    <h3>Mantenimiento y Nutrición</h3>
+                    <span class="solucion-tag">BIOHIDRATANTE, Keratina Bifase</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS SECTION -->
+    <section class="productos" id="productos">
+        <h2 class="section-title">Nuestros Productos</h2>
+        
+        <div class="productos-grid">
+            <div class="producto-card">
+                <div class="producto-image">
+                    <span class="product-badge">BESTSELLER</span>
+                    <img src="img/IMG-20211101-WA0077~2.jpg" alt="Botox Capilares" loading="lazy">
+                </div>
+                <div class="producto-content">
+                    <h3>NOVVO BOTOX CAPILARES</h3>
+                    <p class="producto-desc">Tratamiento de reconstrucción capilar profunda. Reparación de puntas abiertas y brillo extremo.</p>
+                    <button class="btn-comprar" onclick="irAlCatalogo('NOVVO BOTOX CAPILARES')">COMPRAR</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-image">
+                    <span class="product-badge">POPULAR</span>
+                    <img src="img/IMG_20260307_113713_913.webp" alt="Alisado Progresivo" loading="lazy">
+                </div>
+                <div class="producto-content">
+                    <h3>NOVVO ALISADO PROGRESIVO</h3>
+                    <p class="producto-desc">Alisador profesional con tecnología avanzada. Suavidad sin dañar la estructura capilar.</p>
+                    <button class="btn-comprar" onclick="irAlCatalogo('NOVVO ALISADO PROGRESIVO')">COMPRAR</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-image">
+                    <span class="product-badge">NUEVO</span>
+                    <img src="img/Screenshot_20260314_135549.jpg" alt="Mascara Capilares" loading="lazy">
+                </div>
+                <div class="producto-content">
+                    <h3>MASCARA CAPILARES NOVVO</h3>
+                    <p class="producto-desc">Tratamiento intensivo reparador. Restaura brillo y vitalidad al cabello maltratado.</p>
+                    <button class="btn-comprar" onclick="irAlCatalogo('MASCARA CAPILARES NOVVO')">COMPRAR</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-image">
+                    <img src="img/IMG-20250412-WA0017.jpg" alt="Exquisita" loading="lazy">
+                </div>
+                <div class="producto-content">
+                    <h3>EXQUISITE</h3>
+                    <p class="producto-desc">Línea completa para mantenimiento y nutrición. Protege los tratamientos capilares profesionales.</p>
+                    <button class="btn-comprar" onclick="irAlCatalogo('EXQUISITE')">COMPRAR</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-image">
+                    <img src="img/IMG-20250412-WA0015.jpg" alt="Kit Alisado" loading="lazy">
+                </div>
+                <div class="producto-content">
+                    <h3>KIT NOVVO BIOTINA, ALISADO, BIO NANO KERATINA</h3>
+                    <p class="producto-desc">Set completo biotina,alisado Bionano Nano Keratina de productos para alisado profesional. Resultados de salón.</p>
+                    <button class="btn-comprar" onclick="irAlCatalogo('KIT NOVVO Biotina, Alisado,bio nano keratina')">COMPRAR</button>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-image">
+                    <img src="img/kit novvo.webp" alt="Serum NOVVO" loading="lazy">
+                </div>
+                <div class="producto-content">
+                    <h3>KIT NOVVO BAMBU KERATINE, BIO NANO, BOTOX, ALISADO</h3>
+                    <p class="producto-desc">este kit consiste de Bio Nano Keratine,Bambu Keratine, Botox, Alisado.</p>
+                    <button class="btn-comprar" onclick="irAlCatalogo('KIT NOVVO Biotina, Alisado,bio nano keratina')">COMPRAR</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTADOS SECTION -->
+    <section class="resultados" id="resultados">
+        <span class="section-label" style="text-align: center;">TRANSFORMACIÓN ABSOLUTA</span>
+        <h2 class="section-title">Resultados Reales</h2>
+        
+        <div class="resultados-slider">
+            <div class="before-after">
+                <div class="before-after-item">
+                    <span class="before-after-label">ANTES</span>
+                    <div class="before-after-image">
+                        <img src="img/IMG_20210717_164415961.jpg" alt="Antes" loading="lazy">
+                    </div>
+                </div>
+                <div class="before-after-item">
+                    <span class="before-after-label">DESPUÉS</span>
+                    <div class="before-after-image">
+                        <img src="img/IMG_20210717_195132507.jpg" alt="Después" loading="lazy">
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- GALERÍA SECTION -->
+    <section class="galeria" id="galeria">
+        <span class="section-label">NUESTROS PRODUCTOS EN ACCIÓN</span>
+        <h2 class="section-title">Fotos Reales</h2>
+        
+        <div class="galeria-grid">
+            <div class="galeria-item"><img src="img/IMG_20210519_142448921.jpg" alt="Foto 1" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/IMG_20210717_164415961.jpg" alt="Foto 2" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/IMG_20210717_195132507.jpg" alt="Foto 3" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/IMG_20211227_131847006.jpg" alt="Foto 4" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/IMG_20211227_131850308.jpg" alt="Foto 5" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/IMG-20220220-WA0022.jpg" alt="Foto 6" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/IMG_20211004_181928635.jpg" alt="Foto 7" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/Screenshot_20211021-130735~2.jpg" alt="Foto 8" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/grok_image_1772566744788.jpg" alt="Foto 9" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/grok_image_1772567313310.jpg" alt="Foto 10" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/IMG-20260228-WA0035.jpg" alt="Foto 11" loading="lazy"></div>
+            <div class="galeria-item"><img src="img/file_0000000040e8720ea49916bb963de5cf(1).png" alt="Foto 12" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- VIDEOS SECTION -->
+    <section class="galeria" id="videos">
+        <span class="section-label">VIDEOS EN ACCION</span>
+        <h2 class="section-title">productos y cabello</h2>
+        
+        <div class="galeria-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="galeria-item" style="aspect-ratio: auto;">
+                <video width="100%" height="100%" style="object-fit: cover; border-radius: 12px;" controls>
+                    <source src="img/MOVIE.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+            <div class="galeria-item" style="aspect-ratio: auto;">
+                <video width="100%" height="100%" style="object-fit: cover; border-radius: 12px;" controls>
+                    <source src="img/video%20de%20productos.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+            <div class="galeria-item" style="aspect-ratio: auto;">
+                <video width="100%" height="100%" style="object-fit: cover; border-radius: 12px;" controls>
+                    <source src="img/VID_20220228_095320216.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS SECTION -->
+    <section class="testimonios" id="testimonios">
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop&crop=faces" alt="María García" class="testimonio-profile-pic">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-text">"Los productos NOVVO transformaron mi cabello. Después de años de daño, finalmente tengo un cabello brillante y saludable."</p>
+                <p class="testimonio-autor">- María García</p>
+            </div>
+
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=faces" alt="Laura Peluquería" class="testimonio-profile-pic">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-text">"Profesional aquí. Recomiendo NOVVO a todos mis clientes. Los resultados son consistentes y reales."</p>
+                <p class="testimonio-autor">- Laura Peluquería</p>
+            </div>
+
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=faces" alt="Sofia López" class="testimonio-profile-pic">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-text">"El alisado NOVVO es el mejor que he probado. Dura mucho más que otros y el cabello queda suave."</p>
+                <p class="testimonio-autor">- Sofia López</p>
+            </div>
+
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=50&h=50&fit=crop&crop=faces" alt="Daniela Martínez" class="testimonio-profile-pic">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-text">"Increíble transformación. Mi cabello estaba roto y ahora tiene brillo natural. ¡Recomendado!"</p>
+                <p class="testimonio-autor">- Daniela Martínez</p>
+            </div>
+
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1463746897183-a11e9a5fda05?w=50&h=50&fit=crop&crop=faces" alt="Carmen Robles" class="testimonio-profile-pic">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-text">"Uso NOVVO hace 6 meses y mi cabello cambió completamente. Ya no tengo puntas abiertas."</p>
+                <p class="testimonio-autor">- Carmen Robles</p>
+            </div>
+
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1517829997589-0c15b22aadc7?w=50&h=50&fit=crop&crop=faces" alt="Valeria Sánchez" class="testimonio-profile-pic">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-text">"El mejor tratamiento que he hecho. Resultados profesionales a precio justo. Muy recomendado."</p>
+                <p class="testimonio-autor">- Valeria Sánchez</p>
+            </div>
+
+            <div class="testimonio-form">
+                <h3>Deja tu opinión</h3>
+                <div class="form-group">
+                    <label>Tu nombre</label>
+                    <input type="text" id="testimonio-nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Tu calificación</label>
+                    <div class="star-rating" id="star-rating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tu opinión</label>
+                    <textarea id="testimonio-texto" placeholder="Cuéntanos tu experiencia con NOVVO..." required></textarea>
+                </div>
+                <button type="button" class="btn-enviar-testimonio" onclick="enviarTestimonio()">ENVIAR OPINIÓN</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS SECTION -->
+    <section class="sobre-nosotros">
+        <h2 class="section-title" style="margin-bottom: 60px;">Quiénes Somos</h2>
+        <div class="sobre-nosotros-content">
+            <div class="sobre-nosotros-text">
+                <h2>NOVVO Handerly Beauty</h2>
+                <p>
+                    Somos especialistas en cosméticos capilares profesionales con más de 10 años de experiencia en la industria de la belleza. Nuestro compromiso es ofrecerte productos de la más alta calidad, formulados con ingredientes certificados y sin formol.
+                </p>
+                <p>
+                    <strong>Nuestras Líneas Profesionales:</strong><br>
+                    • <strong>Alisado Plastificado:</strong> Alisado progresivo de última generación<br>
+                    • <strong>Biotina:</strong> Reparación y reconstrucción capilar<br>
+                    • <strong>Botox Capilares NOVVO:</strong> Tratamiento de reconstrucción profunda<br>
+                    • <strong>Exquisite:</strong> Línea completa de mantenimiento y nutrición<br>
+                    • <strong> biohidratante con bio nano keratina:</strong> Protección y conservación de tratamientos
+                </p>
+                <p>
+                    Cada producto NOVVO está diseñado para profesionales que buscan resultados de salón con tecnología segura y certificada. Trabajamos con peluquerías profesionales, salones de belleza y especialistas independientes garantizando los más altos estándares de calidad y efectividad.
+                </p>
+                <p>
+                    Nuestro objetivo es que cada cliente sea un embajador de la marca NOVVO Handerly Beauty, confiando en la efectividad, el profesionalismo y la innovación de nuestros productos.
+                </p>
+            </div>
+            <div class="sobre-nosotros-image">
+                <img src="img/grok_image_1773508162624.jpg" alt="NOVVO Brand" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFAS SECTION -->
+    <section class="tarifas" id="tarifas">
+        <div class="tarifas-content">
+            <div>
+                <h2>Tratamientos Profesionales NOVVO</h2>
+                <p style="margin-bottom: 30px;">
+                    <strong>Nuestros tratamientos profesionales</strong> están diseñados con las líneas certificadas NOVVO Handerly Beauty. Cada servicio incluye productos originales y aplicación técnica certificada según la longitud y condición del cabello.
+                </p>
+
+                <div style="margin-bottom: 40px; padding: 20px; border-left: 4px solid #D4AF37; background: rgba(212, 175, 55, 0.08);">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;">📋 SERVICIOS DISPONIBLES:</h3>
+                    <p style="color: #aaa; font-size: 14px; line-height: 1.8;">
+                        ✓ Alisado Plastificado<br>
+                        ✓ Botox Capilares<br>
+                        ✓ Reconstrucción con Biohidratante con nano keratina <br>
+                        ✓ Tratamientos de Mantenimiento<br>
+                        ✓ Aplicaciones a Domicilio Disponibles
+                    </p>
+                </div>
+
+                <div class="tarifa-item">
+                    <span>CABELLO CORTO</span>
+                    <span>$25.000</span>
+                </div>
+
+                <div class="tarifa-item">
+                    <span>CABELLO MEDIO</span>
+                    <span>$30.000</span>
+                </div>
+
+                <div class="tarifa-item">
+                    <span>CABELLO LARGO</span>
+                    <span>$40.000</span>
+                </div>
+
+                <div class="tarifa-item">
+                    <span>CABELLO LARGO EXCESIVO</span>
+                    <span>$50.000</span>
+                </div>
+
+                <p style="margin-top: 40px; font-size: 14px; color: #aaa;">
+                    ✓ Con productos NOVVO Handerly Beauty Professional<br>
+                    ✓ Incluye aplicación técnica certificada<br>
+                    ✓ Garantía de resultados profesionales<br>
+                    ✓ Tratamientos a domicilio disponibles
+                </p>
+            </div>
+
+            <div class="tarifas-image">
+                <img src="img/precios.webp" alt="Tarifas NOVVO" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO SECTION -->
+    <section class="contacto" id="contacto">
+        <div class="contacto-header">
+            <h2>Llevá tu cabello al siguiente nivel</h2>
+            <p>Contactanos hoy y descubrí la diferencia NOVVO</p>
+        </div>
+
+        <div class="contacto-opciones">
+            <button class="opcion-btn active" onclick="window.open('https://wa.me/5491156294134', '_blank')">
+                <span class="opcion-icon">👑</span>
+                <span>Hablar con el Fundador</span>
+            </button>
+            <button class="opcion-btn" onclick="window.open('https://wa.me/5491151550839', '_blank')">
+                <span class="opcion-icon">💼</span>
+                <span>Hablar con CEO</span>
+            </button>
+            <button class="opcion-btn" onclick="window.open('https://wa.me/5491136718961', '_blank')">
+                <span class="opcion-icon">📋</span>
+                <span>Área Administrativa</span>
+            </button>
+        </div>
+
+        <div class="contacto-form">
+            <div class="form-column">
+                <h3>INFORMACIÓN DIRECTA</h3>
+                <div class="contact-info">
+                    <div class="contact-line">
+                        <span class="contact-line-icon">📧</span>
+                        <a href="mailto:novvohanderlybeauty@gmail.com">novvohanderlybeauty@gmail.com</a>
+                    </div>
+
+                    <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">LÍNEAS DE ATENCIÓN</h3>
+
+                    <div class="contact-line" style="cursor: pointer;" onclick="window.open('https://wa.me/5491156294134', '_blank')">
+                        <span class="contact-line-icon">👑</span>
+                        <a href="https://wa.me/5491156294134">Fundador: +54 9 11 5629-4134</a>
+                    </div>
+                    <div class="contact-line" style="cursor: pointer;" onclick="window.open('https://wa.me/5491151550839', '_blank')">
+                        <span class="contact-line-icon">💼</span>
+                        <a href="https://wa.me/5491151550839">CEO: +54 9 11 5155-0839</a>
+                    </div>
+                    <div class="contact-line" style="cursor: pointer;" onclick="window.open('https://wa.me/5491136718961', '_blank')">
+                        <span class="contact-line-icon">📋</span>
+                        <a href="https://wa.me/5491136718961">Administrativa: +54 9 11 3671-8961</a>
+                    </div>
+
+                    <div class="social-links">
+                        <a onclick="window.open('https://www.instagram.com/novvohb/', '_blank')"><span class="social-icon">📷</span> @novvohb (Instagram)</a>
+                        <a onclick="window.open('https://www.instagram.com/handerly_beauty/', '_blank')"><span class="social-icon">📷</span> @handerly_beauty (Instagram)</a>
+                        <a onclick="window.open('https://www.tiktok.com/@novvo_hb', '_blank')"><span class="social-icon">🎵</span> @novvo_hb (TikTok)</a>
+                        <a onclick="window.open('https://www.tiktok.com/@novvo_handerlybeauty22', '_blank')"><span class="social-icon">🎵</span> @novvo_handerlybeauty22 (TikTok)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-column">
+                <h3>ENVIANOS TU CONSULTA</h3>
+                <div class="form-group">
+                    <label>Nombre / Salón</label>
+                    <input type="text" id="form-nombre" placeholder="Tu nombre o nombre del salón" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="form-email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea id="form-mensaje" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                </div>
+                <button type="button" class="form-submit" onclick="enviarConsulta()">ENVIAR MENSAJE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTODOS DE PAGO SECTION -->
+    <section class="metodos-pago" id="metodos-pago">
+        <div class="container">
+            <h2 class="section-title">Métodos de Pago Seguros</h2>
+            <span class="section-label">FORMAS DE PAGAR</span>
+
+            <div class="metodos-grid">
+                <div class="metodo-card">
+                    <div class="metodo-icon">💳</div>
+                    <h3>Mercado Pago</h3>
+                    <p>Paga con tu tarjeta, transferencia bancaria o billetera virtual de forma segura y rápida.</p>
+                    <button class="btn-secondary" onclick="mostrarOpcionesMercadoPago()">Ver Opciones</button>
+                </div>
+
+                <div class="metodo-card">
+                    <div class="metodo-icon">🏦</div>
+                    <h3>Transferencia Bancaria</h3>
+                    <p>Realiza una transferencia directa a nuestra cuenta bancaria verificada.</p>
+                    <button class="btn-secondary" onclick="mostrarInformacionBancaria()">Datos Bancarios</button>
+                </div>
+
+                <div class="metodo-card">
+                    <div class="metodo-icon">₿</div>
+                    <h3>Criptomonedas</h3>
+                    <p>Aceptamos USDC, BTC y XRP para mayor seguridad y privacidad.</p>
+                    <button class="btn-secondary" onclick="mostrarModalCripto()">Ver Direcciones</button>
+                </div>
+            </div>
+
+            <!-- Mercado Pago Options -->
+            <div id="mercadopagoOptions" class="opciones-container" style="display: none; margin-top: 50px;">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">CVUs Mercado Pago</h3>
+                <div class="cvus-grid">
+                    <div class="cvu-card">
+                        <h4>Fundador - Guillermo Carlos Rodriguez</h4>
+                        <p class="cvu-number">CVU: 0000003100082779103094</p>
+                        <p class="cvu-label">Mercado Pago</p>
+                        <button class="btn-primary" onclick="copiarAlPortapapeles('0000003100082779103094', 'CVU copiado')">Copiar CVU</button>
+                        <a href="https://mpago.la/0000003100082779103094" target="_blank" class="btn-primary" style="display: inline-block; margin-top: 10px; text-decoration: none; text-align: center;">Pagar Ahora</a>
+                    </div>
+
+                    <div class="cvu-card">
+                        <h4>CEO - Camila Anahi Rodriguez Garay</h4>
+                        <p class="cvu-number">CVU: 0000003100061640122042</p>
+                        <p class="cvu-label">Mercado Pago</p>
+                        <button class="btn-primary" onclick="copiarAlPortapapeles('0000003100061640122042', 'CVU copiado')">Copiar CVU</button>
+                        <a href="https://mpago.la/0000003100061640122042" target="_blank" class="btn-primary" style="display: inline-block; margin-top: 10px; text-decoration: none; text-align: center;">Pagar Ahora</a>
+                    </div>
+
+                    <div class="cvu-card">
+                        <h4>Administrativo</h4>
+                        <p class="cvu-number">Alias: RO20471444015.NX.ARS</p>
+                        <p class="cvu-label">Naranja X</p>
+                        <button class="btn-primary" onclick="copiarAlPortapapeles('RO20471444015.NX.ARS', 'Alias copiado')">Copiar Alias</button>
+                    </div>
+                </div>
+                <button class="btn-secondary" onclick="ocultarOpcionesMercadoPago()" style="display: block; margin: 30px auto;">Cerrar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TÉRMINOS Y CONDICIONES SECTION -->
+    <section class="terminos-section" id="terminos">
+        <div class="container">
+            <h2 class="section-title">Términos y Condiciones</h2>
+            <div class="politicas-content">
+                <div class="politica-item">
+                    <h3>1. Aceptación de Términos</h3>
+                    <p>Al acceder y utilizar el sitio web de NOVVO Handerly Beauty, aceptas estar vinculado por estos términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, no podrás utilizar nuestros servicios.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>2. Información de Productos</h3>
+                    <p>Todos nuestros productos son cosméticos profesionales certificados. La información de productos en nuestro sitio es precisa a la fecha de publicación. Nos reservamos el derecho de actualizar información de productos sin previo aviso. Las imágenes de productos pueden variar ligeramente del producto final debido a diferencias en monitores.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>3. Política de Pagos</h3>
+                    <p><strong>Pagos Aceptados:</strong> Mercado Pago, billeteras virtuales, transferencias bancarias y criptomonedas (USDC, BTC, XRP). Todos los pagos deben ser completados antes de procesar el pedido. Los precios mostrados incluyen todos los costos, excepto gastos de envío que serán comunicados por separado.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>4. División de Beneficios</h3>
+                    <p>Nos comprometemos con la equidad comercial: <strong>50% de los beneficios se destina a mejorar nuestros productos y servicios</strong>, mientras que el <strong>50% restante beneficia directamente a nuestros clientes a través de mejores precios, promociones y atención de calidad</strong>.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>5. Costos de Envío</h3>
+                    <p>Los costos de envío corren por cuenta del cliente y son informados al momento de la compra. Contamos con opciones de envío seguro a todo el país. La responsabilidad del producto pasa al cliente una vez que éste es retirado del almacén.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>6. Política de Devoluciones</h3>
+                    <p>Los productos deben estar en su empaque original y sin usar. Las devoluciones deben solicitarse dentro de 7 días de la compra. Los costos de envío de devolución corren por cuenta del cliente. Reembolsos se procesan dentro de 5-10 días hábiles una vez recibido el producto.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>7. Responsabilidad Limitada</h3>
+                    <p>NOVVO Handerly Beauty no se responsabiliza por daños indirectos, incidentales, especiales o consecuentes derivados del uso de nuestros productos. La responsabilidad máxima de NOVVO no excederá el monto pagado por el cliente.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>8. Garantía de Productos</h3>
+                    <p>Garantizamos que todos nuestros productos son originales y están certificados. En caso de defecto de fabricación, ofrecemos reemplazo o reembolso. La garantía no cubre el mal uso del producto o falta de seguimiento de instrucciones de aplicación.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>9. Modificación de Términos</h3>
+                    <p>NOVVO Handerly Beauty se reserva el derecho de modificar estos términos en cualquier momento. Las modificaciones entrarán en vigor inmediatamente. El uso continuado del sitio implica la aceptación de los términos modificados.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>10. Contacto y Negociación</h3>
+                    <p>Para consultas, negociaciones especiales o problemas relacionados con tu compra, ponte en contacto directamente con nuestro Fundador, CEO o área Administrativa. Disponibles a través de WhatsApp en la sección de contacto. Comprometemos atención personalizada para resolver cualquier situación de forma equitativa.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>11. Acuerdo con Catálogo de Productos</h3>
+                    <p>Al hacer clic en "COMPRAR", aceptas ser dirigido a nuestro catálogo de WhatsApp donde podrás negociar directamente con nuestro equipo. Allí se aclararán precios finales, disponibilidad, formas de pago personalizadas y cualquier condición especial de tu compra.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>12. Ley Aplicable</h3>
+                    <p>Estos términos se rigen por las leyes de la República Argentina. Las partes aceptan la jurisdicción exclusiva de los tribunales argentinos para resolver cualquier disputa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POLÍTICA DE PRIVACIDAD SECTION -->
+    <section class="politica-section" id="privacidad">
+        <div class="container">
+            <h2 class="section-title">Política de Privacidad</h2>
+            <div class="politicas-content">
+                <div class="politica-item">
+                    <h3>Protección de Datos Personales</h3>
+                    <p>NOVVO Handerly Beauty respeta tu privacidad. Recopilamos información personal solo cuando es necesario para procesar tu pedido, contactarte o mejorar nuestros servicios. Cumplimos con las leyes de protección de datos vigentes en Argentina.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Información Que Recopilamos</h3>
+                    <p>Recopilamos: nombre completo, dirección de entrega, número de teléfono, email y datos de pago. Esta información se utiliza exclusivamente para procesar pedidos, envíos y comunicarnos contigo sobre tu compra.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Uso de la Información</h3>
+                    <p>Utilizamos tu información para: procesar órdenes, enviar productos, proporcionar atención al cliente, enviar actualizaciones sobre pedidos y promociones (solo si lo autorizas), y mejorar nuestro sitio web y servicios.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Seguridad de Datos</h3>
+                    <p>Implementamos medidas de seguridad estrictas para proteger tu información personal contra acceso no autorizado, alteración, divulgación o destrucción. Todos los datos sensibles se transmiten de forma encriptada.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Compartir Información</h3>
+                    <p>No compartimos tu información personal con terceros sin tu consentimiento, excepto: (1) cuando es requerido por ley; (2) con proveedores de envío para entregar tu pedido; (3) con procesadores de pago para procesar transacciones.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Cookies y Tecnologías de Rastreo</h3>
+                    <p>Nuestro sitio utiliza cookies para mejorar tu experiencia de usuario. Las cookies son pequeños archivos que se almacenan en tu dispositivo. Puedes desactivar cookies en tu navegador, aunque esto puede afectar la funcionalidad del sitio.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Derechos del Usuario</h3>
+                    <p>Tienes derecho a: acceder a tus datos personales, solicitar correcciones, solicitar la eliminación de tus datos, optar por no recibir comunicaciones de marketing. Para ejercer estos derechos, contacta a novvohanderlybeauty@gmail.com.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Comunicaciones de Marketing</h3>
+                    <p>Solo te enviaremos promociones y newsletters si lo autorizas explícitamente. Cada email contiene un enlace para darte de baja. Respetamos tu preferencia de no recibir comunicaciones de marketing.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Cambios en esta Política</h3>
+                    <p>Podemos actualizar esta Política de Privacidad en cualquier momento. Te notificaremos de cambios significativos. El uso continuado del sitio implica tu aceptación de la política actualizada.</p>
+                </div>
+
+                <div class="politica-item">
+                    <h3>Contacto Privacidad</h3>
+                    <p>Si tienes preguntas o preocupaciones sobre nuestra Política de Privacidad o cómo manejamos tus datos, contacta a: <strong>novvohanderlybeauty@gmail.com</strong> o comunícate con nuestro equipo a través de WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 NOVVO Handerly Beauty. Todos los derechos reservados. | <a href="#terminos" onclick="document.getElementById('terminos').scrollIntoView({behavior: 'smooth'}); return false;">Términos y Condiciones</a> | <a href="#privacidad" onclick="document.getElementById('privacidad').scrollIntoView({behavior: 'smooth'}); return false;">Política de Privacidad</a> | <a href="#metodos-pago" onclick="document.getElementById('metodos-pago').scrollIntoView({behavior: 'smooth'}); return false;">Métodos de Pago</a></p>
+    </footer>
+
+    <script>
+        // Variables globales
+        let currentUser = null;
+        let ratingSeleccionada = 0;
+        let usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        // Inicializar Google Sign-In
+        function initGoogleSignIn() {
+            try {
+                // ⚠️ IMPORTANTE: Reemplaza el client_id con tu propia credencial de Google
+                // Sigue las instrucciones en INSTRUCCIONES_GOOGLE_OAUTH.md
+                
+                const CLIENT_ID = '1234567890-abcdefghijklmnopqrstuvwxyz.apps.googleusercontent.com';
+                
+                // Verificar si el CLIENT_ID es válido (no es el placeholder)
+                if (CLIENT_ID.includes('1234567890')) {
+                    console.warn('⚠️ Google OAuth Client ID no configurado. Usando login manual.');
+                    return; // No inicializar Google Sign-In si no hay Client ID válido
+                }
+                
+                google.accounts.id.initialize({
+                    client_id: CLIENT_ID,
+                    callback: handleGoogleSignIn
+                });
+                
+                // Renderizar botones de Google Sign-In
+                if (document.getElementById('google_signin_login')) {
+                    google.accounts.id.renderButton(
+                        document.getElementById('google_signin_login'),
+                        {
+                            type: 'standard',
+                            size: 'large',
+                            text: 'signin_with',
+                            theme: 'filled_blue',
+                            width: '100%'
+                        }
+                    );
+                }
+                
+                if (document.getElementById('google_signin_register')) {
+                    google.accounts.id.renderButton(
+                        document.getElementById('google_signin_register'),
+                        {
+                            type: 'standard',
+                            size: 'large',
+                            text: 'signup_with',
+                            theme: 'filled_blue',
+                            width: '100%'
+                        }
+                    );
+                }
+            } catch (error) {
+                console.error('Error al inicializar Google Sign-In:', error);
+            }
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            verificarSesion();
+            setupStarRating();
+            setupSliderDots();
+            setTimeout(initGoogleSignIn, 500);
+        });
+
+        // AUTENTICACIÓN
+        function openLoginModal() {
+            if (currentUser) {
+                logout();
+                return;
+            }
+            document.getElementById('auth-modal').classList.add('active');
+            document.getElementById('login-form').classList.add('active');
+            document.getElementById('register-form').classList.remove('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('auth-modal').classList.remove('active');
+        }
+
+        function toggleForm() {
+            document.getElementById('login-form').classList.toggle('active');
+            document.getElementById('register-form').classList.toggle('active');
+            document.getElementById('modal-title').textContent = document.getElementById('login-form').classList.contains('active') ? 'Iniciar Sesión' : 'Crear Cuenta';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            // Permitir login de prueba
+            if (email === 'prueba@novvo.com' && password === 'Novvo123') {
+                const usuarioPrueba = {
+                    id: 'prueba-user',
+                    nombre: 'Usuario de Prueba NOVVO',
+                    email: email,
+                    foto: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop&crop=faces',
+                    proveedor: 'local'
+                };
+                currentUser = usuarioPrueba;
+                localStorage.setItem('currentUser', JSON.stringify(usuarioPrueba));
+                actualizarHeaderUsuario();
+                closeLoginModal();
+                alert(`¡Bienvenido ${usuarioPrueba.nombre}!`);
+                return;
+            }
+
+            const usuario = usuariosRegistrados.find(u => u.email === email && u.password === password);
+            
+            if (usuario) {
+                currentUser = usuario;
+                localStorage.setItem('currentUser', JSON.stringify(usuario));
+                actualizarHeaderUsuario();
+                closeLoginModal();
+                alert(`¡Bienvenido ${usuario.nombre}!`);
+            } else {
+                alert('Email o contraseña incorrectos. Puedes probar con email: prueba@novvo.com y contraseña: Novvo123');
+            }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+
+            if (password !== confirm) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+
+            if (usuariosRegistrados.find(u => u.email === email)) {
+                alert('Este email ya está registrado');
+                return;
+            }
+
+            const nuevoUsuario = {
+                id: Date.now(),
+                nombre: name,
+                email: email,
+                password: password,
+                fechaRegistro: new Date().toLocaleDateString()
+            };
+
+            usuariosRegistrados.push(nuevoUsuario);
+            localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
+            
+            currentUser = nuevoUsuario;
+            localStorage.setItem('currentUser', JSON.stringify(nuevoUsuario));
+            actualizarHeaderUsuario();
+            closeLoginModal();
+            alert(`¡Bienvenido ${name}! Cuenta creada exitosamente.`);
+        }
+
+        function handleGoogleSignIn(response) {
+            if (response.credential) {
+                const base64Url = response.credential.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                
+                const userData = JSON.parse(jsonPayload);
+                
+                const usuarioGoogle = {
+                    id: userData.sub,
+                    nombre: userData.name,
+                    email: userData.email,
+                    foto: userData.picture,
+                    proveedor: 'google'
+                };
+                
+                currentUser = usuarioGoogle;
+                localStorage.setItem('currentUser', JSON.stringify(usuarioGoogle));
+                actualizarHeaderUsuario();
+                closeLoginModal();
+                alert(`¡Bienvenido ${usuarioGoogle.nombre}! Has iniciado sesión con Google.`);
+            }
+        }
+
+        function loginWithGoogle() {
+            // Esta función ya no se usa directamente, el botón de Google Sign-In maneja todo
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            actualizarHeaderUsuario();
+            alert('Sesión cerrada');
+        }
+
+        function actualizarHeaderUsuario() {
+            const userDisplay = document.getElementById('user-display');
+            const loginBtn = document.getElementById('login-btn');
+
+            if (currentUser) {
+                let userContent = `<div style="display: flex; gap: 10px; align-items: center;">`;
+                
+                if (currentUser.foto) {
+                    userContent += `<img src="${currentUser.foto}" alt="Foto perfil" class="user-profile-pic" title="${currentUser.nombre}">`;
+                } else {
+                    userContent += `<span class="user-status">👤 ${currentUser.nombre}</span>`;
+                }
+                
+                userContent += `<button class="logout-btn" onclick="logout()">Cerrar Sesión</button></div>`;
+                userDisplay.innerHTML = userContent;
+                loginBtn.style.display = 'none';
+            } else {
+                userDisplay.innerHTML = '';
+                loginBtn.style.display = 'block';
+            }
+        }
+
+        function verificarSesion() {
+            const usuarioGuardado = localStorage.getItem('currentUser');
+            if (usuarioGuardado) {
+                currentUser = JSON.parse(usuarioGuardado);
+                actualizarHeaderUsuario();
+            }
+        }
+
+        // SISTEMA DE CALIFICACIÓN
+        function setupStarRating() {
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', function() {
+                    ratingSeleccionada = this.dataset.value;
+                    document.querySelectorAll('.star').forEach((s, index) => {
+                        if (index < ratingSeleccionada) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        // ENVIAR TESTIMONIOS
+        function enviarTestimonio() {
+            if (!currentUser) {
+                alert('Debes iniciar sesión para dejar una opinión');
+                openLoginModal();
+                return;
+            }
+
+            const nombre = document.getElementById('testimonio-nombre').value || currentUser.nombre;
+            const texto = document.getElementById('testimonio-texto').value;
+            
+            if (!nombre || !texto || ratingSeleccionada === 0) {
+                alert('Por favor completa todos los campos y selecciona una calificación');
+                return;
+            }
+
+            const stars = '★'.repeat(ratingSeleccionada);
+            
+            // Guardar testimonial con foto de perfil
+            const testimonial = {
+                usuario: currentUser.nombre,
+                email: currentUser.email,
+                foto: currentUser.foto || '',
+                nombre: nombre,
+                calificacion: ratingSeleccionada,
+                texto: texto,
+                fecha: new Date().toLocaleDateString()
+            };
+            
+            let testimoniales = JSON.parse(localStorage.getItem('testimoniales')) || [];
+            testimoniales.push(testimonial);
+            localStorage.setItem('testimoniales', JSON.stringify(testimoniales));
+            
+            const mensaje = `NUEVO TESTIMONIAL:
+Usuario: ${currentUser.nombre}
+Email: ${currentUser.email}
+Foto de Perfil: ${currentUser.foto || 'No disponible'}
+Nombre Testimonio: ${nombre}
+Calificación: ${ratingSeleccionada}/5 ${stars}
+Opinión: ${texto}
+Fecha: ${new Date().toLocaleDateString()}`;
+
+            enviarPorEmail(mensaje, 'Nuevo Testimonial');
+            
+            alert('¡Gracias por tu testimonial! Hemos recibido tu opinión.');
+            document.getElementById('testimonio-nombre').value = '';
+            document.getElementById('testimonio-texto').value = '';
+            ratingSeleccionada = 0;
+            document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+        }
+
+        // ENVIAR CONSULTA
+        function enviarConsulta() {
+            const nombre = document.getElementById('form-nombre').value;
+            const email = document.getElementById('form-email').value;
+            const mensaje = document.getElementById('form-mensaje').value;
+
+            if (!nombre || !email || !mensaje) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor ingresa un email válido');
+                return;
+            }
+
+            const usuarioInfo = currentUser ? `Usuario: ${currentUser.nombre}` : 'Usuario: No registrado';
+            const consultaMensaje = `NUEVA CONSULTA:
+
+${usuarioInfo}
+Email Cliente: ${email}
+Nombre/Salón: ${nombre}
+Mensaje: ${mensaje}
+Fecha: ${new Date().toLocaleString()}`;
+
+            enviarPorEmail(consultaMensaje, 'Nueva Consulta');
+            
+            alert(`¡Gracias ${nombre}! Tu consulta ha sido enviada. Nos contactaremos a ${email} pronto.`);
+            document.getElementById('form-nombre').value = '';
+            document.getElementById('form-email').value = '';
+            document.getElementById('form-mensaje').value = '';
+        }
+
+        // ENVIAR EMAIL (FormSpree)
+        function enviarPorEmail(mensaje, tipo) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://formspree.io/f/xvgnwqvl'; // Reemplazar con tu ID de FormSpree
+            
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'message';
+            input.value = mensaje;
+            
+            const inputTipo = document.createElement('input');
+            inputTipo.type = 'hidden';
+            inputTipo.name = 'tipo';
+            inputTipo.value = tipo;
+            
+            form.appendChild(input);
+            form.appendChild(inputTipo);
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+        // REDIRECCIÓN AL CATÁLOGO DE WHATSAPP
+        function irAlCatalogo(producto) {
+            const mensaje = encodeURIComponent(`Hola 👑 Me interesa: ${producto}`);
+            window.open(`https://wa.me/c/5491156294134?text=${mensaje}`, '_blank');
+        }
+
+        // MÉTODOS DE PAGO
+        function mostrarOpcionesMercadoPago() {
+            const elemento = document.getElementById('mercadopagoOptions');
+            if (elemento.style.display === 'none') {
+                elemento.style.display = 'block';
+                elemento.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+            }
+        }
+
+        function ocultarOpcionesMercadoPago() {
+            document.getElementById('mercadopagoOptions').style.display = 'none';
+        }
+
+        function copiarAlPortapapeles(texto, mensaje) {
+            navigator.clipboard.writeText(texto).then(() => {
+                alert(mensaje + ': ' + texto);
+            }).catch(err => {
+                alert('Error al copiar: ' + err);
+            });
+        }
+
+        function mostrarInformacionBancaria() {
+            alert(`INFORMACIÓN BANCARIA NOVVO HANDERLY BEAUTY:\n\nNOMBRE: Guillermo Carlos Rodriguez\nTIPO DE CUENTA: Cuenta Corriente\nBANCO: Banco Santander Argentina\n\nLos datos completos se comparten por WhatsApp por seguridad.\nContacta a: https://wa.me/5491156294134`);
+        }
+
+        function mostrarModalCripto() {
+            alert(`CRIPTOMONEDAS ACEPTADAS:\n\n₿ BITCOIN (BTC)\n₳ XRP\n💵 USDC (USD Coin)\n\nLas direcciones de billetera se comparten de forma segura por WhatsApp.\n\nContacta a nuestro equipo:\nhttps://wa.me/5491156294134`);
+        }
+
+        // SLIDER
+        function setupSliderDots() {
+            let currentSlide = 0;
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = dots.length;
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    dots.forEach(d => d.classList.remove('active'));
+                    dot.classList.add('active');
+                    currentSlide = index;
+                });
+            });
+
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                dots.forEach(d => d.classList.remove('active'));
+                dots[currentSlide].classList.add('active');
+            }, 5000);
+        }
+
+        // ANIMACIONES DE SCROLL
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // HEADER STICKY
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.4)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        console.log('✨ NOVVO Handerly Beauty - Página cargada con éxito');
+    </script>
+</body>
+</html>

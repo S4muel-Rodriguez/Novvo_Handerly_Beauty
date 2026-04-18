@@ -1777,24 +1777,44 @@
 <body>
     <!-- SPLASH MODAL OBLIGATORIO - TÉRMINOS Y CONDICIONES -->
     <div class="modal" id="splash-modal" style="display: flex; z-index: 2000;">
-        <div class="modal-content" style="max-width: 800px; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column;">
-            <div class="modal-header" style="border-bottom: 2px solid rgba(212, 175, 55, 0.3);">
-                <h2 id="modal-title" style="text-align: center;">TÉRMINOS, CONDICIONES Y POLÍTICA DE PRIVACIDAD</h2>
+        <div class="modal-content" style="max-width: 900px; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column;">
+            <div class="modal-header" style="border-bottom: 2px solid rgba(212, 175, 55, 0.3); padding: 20px;">
+                <h2 id="modal-title" style="text-align: center; font-size: 22px;">🔒 Aceptación Requerida</h2>
+                <p style="text-align: center; color: #999; font-size: 13px; margin-top: 8px;">Debes aceptar términos, privacidad y métodos de pago para continuar</p>
             </div>
             
             <!-- TABS -->
-            <div style="display: flex; gap: 10px; padding: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 10, 10, 0.8); flex-wrap: wrap;">
-                <button class="tab-btn active" onclick="cambiarPestana('terminos-splash')" style="flex: 1; min-width: 150px; padding: 12px; background: rgba(212, 175, 55, 0.3); border: 2px solid var(--primary); color: var(--primary); border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s; font-size: 12px;">TÉRMINOS</button>
-                <button class="tab-btn" onclick="cambiarPestana('privacidad-splash')" style="flex: 1; min-width: 150px; padding: 12px; background: transparent; border: 2px solid rgba(212, 175, 55, 0.2); color: #aaa; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s; font-size: 12px;">PRIVACIDAD</button>
-                <button class="tab-btn" onclick="cambiarPestana('metodos-splash')" style="flex: 1; min-width: 150px; padding: 12px; background: transparent; border: 2px solid rgba(212, 175, 55, 0.2); color: #aaa; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s; font-size: 12px;">MÉTODOS DE PAGO</button>
+            <div style="display: flex; gap: 8px; padding: 15px 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); background: rgba(10, 10, 10, 0.8); flex-wrap: wrap; justify-content: center;">
+                <button class="tab-btn active" onclick="cambiarPestana('terminos-splash')" style="flex: 1; min-width: 120px; padding: 10px; background: rgba(212, 175, 55, 0.3); border: 2px solid var(--primary); color: var(--primary); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 12px;">✓ TÉRMINOS</button>
+                <button class="tab-btn" onclick="cambiarPestana('privacidad-splash')" style="flex: 1; min-width: 120px; padding: 10px; background: transparent; border: 2px solid rgba(212, 175, 55, 0.2); color: #999; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 12px;">✓ PRIVACIDAD</button>
+                <button class="tab-btn" onclick="cambiarPestana('metodos-splash')" style="flex: 1; min-width: 120px; padding: 10px; background: transparent; border: 2px solid rgba(212, 175, 55, 0.2); color: #999; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 12px;">💳 PAGO</button>
             </div>
 
             <!-- CONTENIDO -->
-            <div style="flex: 1; overflow-y: auto; padding: 20px; color: #c0c0c0; font-size: 13px; line-height: 1.8;">
+            <div style="flex: 1; overflow-y: auto; padding: 18px 20px; color: #b0b0b0; font-size: 13px; line-height: 1.7;">
                 <!-- TAB 1: TÉRMINOS -->
                 <div id="terminos-splash" style="display: block;">
-                    <h3 style="color: var(--primary); margin: 15px 0 10px 0;">1. ACEPTACIÓN DE TÉRMINOS</h3>
-                    <p>Al acceder y utilizar el sitio web de NOVVO Handerly Beauty, aceptas estar vinculado por estos términos y condiciones.</p>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">1. ACEPTACIÓN</strong><br>Al acceder al sitio, aceptas estos términos y condiciones.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">2. PRODUCTOS</strong><br>Cosméticos profesionales certificados. Nos reservamos actualizar información.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">3. PAGOS</strong><br>Mercado Pago, billeteras virtuales, criptomonedas (USDC, BTC, XRP).</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">4. BENEFICIOS</strong><br>50% mejora de productos • 50% beneficia clientes con mejores precios.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">5. ENVÍO</strong><br>Costos por cuenta del cliente, informados al momento de compra.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">6. DEVOLUCIONES</strong><br>Disponibles 7 días post-compra en empaque original, sin usar.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">7. GARANTÍA</strong><br>Productos originales certificados. Reemplazo/reembolso por defecto.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">8. CONTACTO</strong><br>WhatsApp: atención personalizada para consultas garantizada.</div>
+                    <div><strong style="color: var(--primary);">9. LEY</strong><br>Rige bajo leyes de la República Argentina.</div>
+                </div>
+
+                <!-- TAB 2: PRIVACIDAD -->
+                <div id="privacidad-splash" style="display: none;">
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">PROTECCIÓN DE DATOS</strong><br>Respetamos tu privacidad. Recopilamos información solo cuando sea necesario.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">QUÉ RECOPILAMOS</strong><br>Nombre, dirección, teléfono, email, datos de pago. Solo para procesar pedidos.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">SEGURIDAD</strong><br>Medidas de seguridad estrictas. Datos sensibles encriptados.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">COMPARTIR INFO</strong><br>No compartimos sin consentimiento. Solo con proveedores de envío si es necesario.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">TUS DERECHOS</strong><br>Acceso, corrección, eliminación de datos, optar por no recibir marketing.</div>
+                    <div style="margin-bottom: 12px;"><strong style="color: var(--primary);">CAMBIOS</strong><br>Podemos actualizar política. Uso continuado = aceptación de cambios.</div>
+                    <div><strong style="color: var(--primary);">CONTACTO</strong><br>novvohanderlybeauty@gmail.com o WhatsApp.</div>
+                </div>
 
                     <h3 style="color: var(--primary); margin: 15px 0 10px 0;">2. INFORMACIÓN DE PRODUCTOS</h3>
                     <p>Todos nuestros productos son cosméticos profesionales certificados. Nos reservamos el derecho de actualizar información sin previo aviso.</p>
@@ -2521,135 +2541,82 @@
         </div>
     </section>
 
-    <!-- TÉRMINOS Y CONDICIONES SECTION -->
-    <section class="terminos-section" id="terminos">
-        <div class="container">
-            <h2 class="section-title">Términos y Condiciones</h2>
-            <div class="politicas-content">
-                <div class="politica-item">
-                    <h3>1. Aceptación de Términos</h3>
-                    <p>Al acceder y utilizar el sitio web de NOVVO Handerly Beauty, aceptas estar vinculado por estos términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, no podrás utilizar nuestros servicios.</p>
-                </div>
+    <!-- MÉTODOS DE PAGO SECTION -->
+    <section class="metodos-pago-visible" id="metodos-pago-visible" style="padding: 50px 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(29, 181, 132, 0.03) 100%);">
+        <div class="container" style="max-width: 1000px; margin: 0 auto;">
+            <h2 class="section-title" style="font-size: 32px; margin-bottom: 10px;">💳 Métodos de Pago</h2>
+            <span class="section-label" style="margin-bottom: 40px; display: block;">FORMAS SEGURAS DE PAGAR</span>
 
-                <div class="politica-item">
-                    <h3>2. Información de Productos</h3>
-                    <p>Todos nuestros productos son cosméticos profesionales certificados. La información de productos en nuestro sitio es precisa a la fecha de publicación. Nos reservamos el derecho de actualizar información de productos sin previo aviso. Las imágenes de productos pueden variar ligeramente del producto final debido a diferencias en monitores.</p>
-                </div>
+            <!-- Mercado Pago Section -->
+            <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 12px; padding: 25px; margin-bottom: 25px;">
+                <h3 style="color: var(--primary); font-size: 22px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span>💳</span> Mercado Pago
+                </h3>
+                <p style="color: #999; margin-bottom: 18px; font-size: 14px; line-height: 1.6;">Paga seguro y rápido. Aceptamos transferencias, tarjetas y billeteras virtuales.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                    <!-- CVU 1 -->
+                    <div style="background: rgba(10, 10, 10, 0.6); border-left: 3px solid var(--primary); padding: 16px; border-radius: 8px;">
+                        <p style="color: var(--primary); font-weight: 600; font-size: 13px; margin-bottom: 6px;">👤 GUILLERMO (Fundador)</p>
+                        <div style="background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 5px; margin-bottom: 12px; font-family: 'Courier New', monospace;">
+                            <span style="color: var(--primary); font-size: 12px; word-break: break-all; font-weight: 600;">0000003100082779103094</span>
+                        </div>
+                        <div style="display: flex; gap: 8px; font-size: 13px;">
+                            <button onclick="copiarAlPortapapeles('0000003100082779103094', '✓ CVU copiado')" style="flex: 1; padding: 8px; background: var(--primary); color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.2s;">Copiar</button>
+                            <a href="https://mpago.la/pagar/0000003100082779103094" target="_blank" style="flex: 1; padding: 8px; background: var(--accent); color: #fff; border: none; border-radius: 5px; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center;">Pagar</a>
+                        </div>
+                    </div>
 
-                <div class="politica-item">
-                    <h3>3. Política de Pagos</h3>
-                    <p><strong>Pagos Aceptados:</strong> Mercado Pago, billeteras virtuales, transferencias bancarias y criptomonedas (USDC, BTC, XRP). Todos los pagos deben ser completados antes de procesar el pedido. Los precios mostrados incluyen todos los costos, excepto gastos de envío que serán comunicados por separado.</p>
-                </div>
+                    <!-- CVU 2 -->
+                    <div style="background: rgba(10, 10, 10, 0.6); border-left: 3px solid var(--primary); padding: 16px; border-radius: 8px;">
+                        <p style="color: var(--primary); font-weight: 600; font-size: 13px; margin-bottom: 6px;">👤 CAMILA (CEO)</p>
+                        <div style="background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 5px; margin-bottom: 12px; font-family: 'Courier New', monospace;">
+                            <span style="color: var(--primary); font-size: 12px; word-break: break-all; font-weight: 600;">0000003100061640122042</span>
+                        </div>
+                        <div style="display: flex; gap: 8px; font-size: 13px;">
+                            <button onclick="copiarAlPortapapeles('0000003100061640122042', '✓ CVU copiado')" style="flex: 1; padding: 8px; background: var(--primary); color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.2s;">Copiar</button>
+                            <a href="https://mpago.la/pagar/0000003100061640122042" target="_blank" style="flex: 1; padding: 8px; background: var(--accent); color: #fff; border: none; border-radius: 5px; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center;">Pagar</a>
+                        </div>
+                    </div>
 
-                <div class="politica-item">
-                    <h3>4. División de Beneficios</h3>
-                    <p>Nos comprometemos con la equidad comercial: <strong>50% de los beneficios se destina a mejorar nuestros productos y servicios</strong>, mientras que el <strong>50% restante beneficia directamente a nuestros clientes a través de mejores precios, promociones y atención de calidad</strong>.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>5. Costos de Envío</h3>
-                    <p>Los costos de envío corren por cuenta del cliente y son informados al momento de la compra. Contamos con opciones de envío seguro a todo el país. La responsabilidad del producto pasa al cliente una vez que éste es retirado del almacén.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>6. Política de Devoluciones</h3>
-                    <p>Los productos deben estar en su empaque original y sin usar. Las devoluciones deben solicitarse dentro de 7 días de la compra. Los costos de envío de devolución corren por cuenta del cliente. Reembolsos se procesan dentro de 5-10 días hábiles una vez recibido el producto.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>7. Responsabilidad Limitada</h3>
-                    <p>NOVVO Handerly Beauty no se responsabiliza por daños indirectos, incidentales, especiales o consecuentes derivados del uso de nuestros productos. La responsabilidad máxima de NOVVO no excederá el monto pagado por el cliente.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>8. Garantía de Productos</h3>
-                    <p>Garantizamos que todos nuestros productos son originales y están certificados. En caso de defecto de fabricación, ofrecemos reemplazo o reembolso. La garantía no cubre el mal uso del producto o falta de seguimiento de instrucciones de aplicación.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>9. Modificación de Términos</h3>
-                    <p>NOVVO Handerly Beauty se reserva el derecho de modificar estos términos en cualquier momento. Las modificaciones entrarán en vigor inmediatamente. El uso continuado del sitio implica la aceptación de los términos modificados.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>10. Contacto y Negociación</h3>
-                    <p>Para consultas, negociaciones especiales o problemas relacionados con tu compra, ponte en contacto directamente con nuestro Fundador, CEO o área Administrativa. Disponibles a través de WhatsApp en la sección de contacto. Comprometemos atención personalizada para resolver cualquier situación de forma equitativa.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>11. Acuerdo con Catálogo de Productos</h3>
-                    <p>Al hacer clic en "COMPRAR", aceptas ser dirigido a nuestro catálogo de WhatsApp donde podrás negociar directamente con nuestro equipo. Allí se aclararán precios finales, disponibilidad, formas de pago personalizadas y cualquier condición especial de tu compra.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>12. Ley Aplicable</h3>
-                    <p>Estos términos se rigen por las leyes de la República Argentina. Las partes aceptan la jurisdicción exclusiva de los tribunales argentinos para resolver cualquier disputa.</p>
+                    <!-- CVU 3 -->
+                    <div style="background: rgba(10, 10, 10, 0.6); border-left: 3px solid var(--primary); padding: 16px; border-radius: 8px;">
+                        <p style="color: var(--primary); font-weight: 600; font-size: 13px; margin-bottom: 6px;">🏢 NARANJA X (Administrativo)</p>
+                        <div style="background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 5px; margin-bottom: 12px; font-family: 'Courier New', monospace;">
+                            <span style="color: var(--primary); font-size: 12px; word-break: break-all; font-weight: 600;">RO20471444015.NX.ARS</span>
+                        </div>
+                        <div style="display: flex; gap: 8px; font-size: 13px;">
+                            <button onclick="copiarAlPortapapeles('RO20471444015.NX.ARS', '✓ Alias copiado')" style="flex: 1; padding: 8px; background: var(--primary); color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.2s;">Copiar</button>
+                            <a href="https://mercadopago.com.ar" target="_blank" style="flex: 1; padding: 8px; background: var(--accent); color: #fff; border: none; border-radius: 5px; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center;">Ir a MP</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- POLÍTICA DE PRIVACIDAD SECTION -->
-    <section class="politica-section" id="privacidad">
-        <div class="container">
-            <h2 class="section-title">Política de Privacidad</h2>
-            <div class="politicas-content">
-                <div class="politica-item">
-                    <h3>Protección de Datos Personales</h3>
-                    <p>NOVVO Handerly Beauty respeta tu privacidad. Recopilamos información personal solo cuando es necesario para procesar tu pedido, contactarte o mejorar nuestros servicios. Cumplimos con las leyes de protección de datos vigentes en Argentina.</p>
+            <!-- Criptomonedas Section -->
+            <div style="background: rgba(29, 181, 132, 0.08); border: 1px solid rgba(29, 181, 132, 0.25); border-radius: 12px; padding: 25px;">
+                <h3 style="color: var(--accent); font-size: 22px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span>₿</span> Criptomonedas
+                </h3>
+                <p style="color: #999; margin-bottom: 14px; font-size: 14px; line-height: 1.6;">Aceptamos USDC, Bitcoin y XRP para mayor seguridad y privacidad.</p>
+                
+                <div style="background: rgba(29, 181, 132, 0.1); border-left: 3px solid var(--accent); padding: 16px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">
+                        <strong style="color: var(--accent);">🔗 Redes:</strong> USDC • Bitcoin (BTC) • Ripple (XRP)<br>
+                        <strong style="color: var(--accent);">📌 Nota:</strong> Contacta por WhatsApp para recibir direcciones de forma segura.
+                    </p>
                 </div>
-
-                <div class="politica-item">
-                    <h3>Información Que Recopilamos</h3>
-                    <p>Recopilamos: nombre completo, dirección de entrega, número de teléfono, email y datos de pago. Esta información se utiliza exclusivamente para procesar pedidos, envíos y comunicarnos contigo sobre tu compra.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Uso de la Información</h3>
-                    <p>Utilizamos tu información para: procesar órdenes, enviar productos, proporcionar atención al cliente, enviar actualizaciones sobre pedidos y promociones (solo si lo autorizas), y mejorar nuestro sitio web y servicios.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Seguridad de Datos</h3>
-                    <p>Implementamos medidas de seguridad estrictas para proteger tu información personal contra acceso no autorizado, alteración, divulgación o destrucción. Todos los datos sensibles se transmiten de forma encriptada.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Compartir Información</h3>
-                    <p>No compartimos tu información personal con terceros sin tu consentimiento, excepto: (1) cuando es requerido por ley; (2) con proveedores de envío para entregar tu pedido; (3) con procesadores de pago para procesar transacciones.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Cookies y Tecnologías de Rastreo</h3>
-                    <p>Nuestro sitio utiliza cookies para mejorar tu experiencia de usuario. Las cookies son pequeños archivos que se almacenan en tu dispositivo. Puedes desactivar cookies en tu navegador, aunque esto puede afectar la funcionalidad del sitio.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Derechos del Usuario</h3>
-                    <p>Tienes derecho a: acceder a tus datos personales, solicitar correcciones, solicitar la eliminación de tus datos, optar por no recibir comunicaciones de marketing. Para ejercer estos derechos, contacta a novvohanderlybeauty@gmail.com.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Comunicaciones de Marketing</h3>
-                    <p>Solo te enviaremos promociones y newsletters si lo autorizas explícitamente. Cada email contiene un enlace para darte de baja. Respetamos tu preferencia de no recibir comunicaciones de marketing.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Cambios en esta Política</h3>
-                    <p>Podemos actualizar esta Política de Privacidad en cualquier momento. Te notificaremos de cambios significativos. El uso continuado del sitio implica tu aceptación de la política actualizada.</p>
-                </div>
-
-                <div class="politica-item">
-                    <h3>Contacto Privacidad</h3>
-                    <p>Si tienes preguntas o preocupaciones sobre nuestra Política de Privacidad o cómo manejamos tus datos, contacta a: <strong>novvohanderlybeauty@gmail.com</strong> o comunícate con nuestro equipo a través de WhatsApp.</p>
-                </div>
+                
+                <a href="https://wa.me/c/5491156294134?text=Hola%20NOVVO%20Handerly%20Beauty%2C%20quiero%20pagar%20con%20criptomonedas%20para%20mi%20compra." target="_blank" style="display: inline-block; padding: 12px 24px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.2s;">
+                    📱 Contactar por WhatsApp
+                </a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 NOVVO Handerly Beauty. Todos los derechos reservados. | <a href="#terminos" onclick="document.getElementById('terminos').scrollIntoView({behavior: 'smooth'}); return false;">Términos y Condiciones</a> | <a href="#privacidad" onclick="document.getElementById('privacidad').scrollIntoView({behavior: 'smooth'}); return false;">Política de Privacidad</a> | <a href="#metodos-pago" onclick="document.getElementById('metodos-pago').scrollIntoView({behavior: 'smooth'}); return false;">Métodos de Pago</a></p>
+        <p>© 2026 NOVVO Handerly Beauty. Todos los derechos reservados. | <a href="#metodos-pago-visible" onclick="document.getElementById('metodos-pago-visible').scrollIntoView({behavior: 'smooth'}); return false;">Métodos de Pago</a></p>
     </footer>
 
     <script>

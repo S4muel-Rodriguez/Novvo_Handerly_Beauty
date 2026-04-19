@@ -2389,6 +2389,35 @@
             cursor: pointer;
         }
 
+        .chatbot-header-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chatbot-header-btn {
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            color: var(--dark);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-header-btn:hover {
+            background: rgba(0, 0, 0, 0.3);
+            transform: scale(1.1);
+        }
+
+        .chatbot-header-btn:active {
+            transform: scale(0.95);
+        }
+
         .chatbot-messages {
             flex: 1;
             overflow-y: auto;
@@ -4115,25 +4144,25 @@ Fecha: ${new Date().toLocaleString()}`;
                 this.isOpen = false;
                 this.messages = [];
                 this.isWaiting = false;
+                this.currentContext = null; // Rastrear lo que seleccionó el usuario
                 this.initChatbot();
             }
 
             initChatbot() {
-                // Esperar a que el DOM esté completamente listo
                 if (document.readyState === 'loading') {
                     document.addEventListener('DOMContentLoaded', () => this.setupEventListeners());
                 } else {
                     this.setupEventListeners();
                 }
 
-                // Mensaje de bienvenida
                 setTimeout(() => {
-                    this.addMessage('¡Hola! 👋 Soy NOVA, tu asistente de NOVVO Handerly Beauty. ¿Cómo puedo ayudarte hoy?', 'bot');
+                    this.mostrarMenu();
                 }, 800);
             }
 
             setupEventListeners() {
                 const chatbotBtn = document.getElementById('chatbot-btn');
+                const chatbotNew = document.getElementById('chatbot-new');
                 const chatbotClose = document.getElementById('chatbot-close');
                 const chatbotSend = document.getElementById('chatbot-send');
                 const chatbotInput = document.getElementById('chatbot-input');
@@ -4143,6 +4172,14 @@ Fecha: ${new Date().toLocaleString()}`;
                         e.preventDefault();
                         e.stopPropagation();
                         this.toggleChatbot();
+                    });
+                }
+
+                if (chatbotNew) {
+                    chatbotNew.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.newChat();
                     });
                 }
 
@@ -4170,7 +4207,6 @@ Fecha: ${new Date().toLocaleString()}`;
                         }
                     });
 
-                    // Permitir escribir mientras chat está abierto
                     chatbotInput.addEventListener('focus', () => {
                         if (!this.isOpen) {
                             this.toggleChatbot();
@@ -4198,12 +4234,29 @@ Fecha: ${new Date().toLocaleString()}`;
                         const input = document.getElementById('chatbot-input');
                         if (input) input.focus();
                     }, 100);
-                    console.log('✅ Chatbot abierto');
                 } else {
                     container.classList.remove('active');
                     btn.classList.remove('open');
-                    console.log('✅ Chatbot cerrado');
                 }
+            }
+
+            newChat() {
+                // Limpiar historial
+                const messagesDiv = document.getElementById('chatbot-messages');
+                if (messagesDiv) {
+                    messagesDiv.innerHTML = '';
+                }
+                this.messages = [];
+                this.currentContext = null;
+                
+                // Mostrar menú nuevamente
+                setTimeout(() => {
+                    this.mostrarMenu();
+                }, 300);
+            }
+
+            mostrarMenu() {
+                this.addMessage('¡Hola! 👋 Soy NOVA, tu asistente de NOVVO Handerly Beauty.\n\n¿En qué puedo ayudarte?\n\n1️⃣ 📦 Ver productos\n2️⃣ 💳 Métodos de pago\n3️⃣ 🚚 Información de envíos\n4️⃣ 📱 Contacto directo\n\nEscribe el número de tu opción:', 'bot');
             }
 
             addMessage(text, sender) {
@@ -4213,13 +4266,11 @@ Fecha: ${new Date().toLocaleString()}`;
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `chat-message ${sender}`;
                 
-                // Convertir saltos de línea en <br>
                 const htmlText = text.replace(/\n/g, '<br>');
                 messageDiv.innerHTML = `<div class="message-bubble ${sender}">${htmlText}</div>`;
                 
                 messagesDiv.appendChild(messageDiv);
                 
-                // Auto-scroll al final
                 setTimeout(() => {
                     messagesDiv.scrollTop = messagesDiv.scrollHeight;
                 }, 10);
@@ -4257,82 +4308,161 @@ Fecha: ${new Date().toLocaleString()}`;
                 input.value = '';
                 this.isWaiting = true;
 
-                // Mostrar indicador de escritura
                 this.showTypingIndicator();
 
-                // Simular delay de respuesta natural
                 setTimeout(() => {
                     this.removeTypingIndicator();
                     const response = this.procesarPregunta(message);
                     this.addMessage(response, 'bot');
                     this.isWaiting = false;
-                }, 600 + Math.random() * 400); // 600-1000ms
+                }, 600 + Math.random() * 400);
             }
 
-            procesarPregunta(pregunta) {
-                pregunta = pregunta.toLowerCase().trim();
+            procesarPregunta(entrada) {
+                entrada = entrada.toLowerCase().trim();
 
-                // FLUJO DE DATOS CON PALABRAS CLAVE
+                // ============================================
+                // 1. DETECTAR SELECCIÓN DE MENÚ (números)
+                // ============================================
+                if (entrada === '1' || entrada === 'opción 1' || entrada === 'opcion 1' || entrada.includes('producto')) {
+                    this.currentContext = 'productos';
+                    return '📦 Tenemos cosméticos capilares premium:\n\n• ✨ Alisados profesionales\n• 💎 Reparación profunda\n• 🌟 Brillo extremo\n• 🧴 Tratamientos nutritivos\n• 💆 Mascarillas reparadoras\n\n¿Cuál de nuestros productos te gustaría conocer más? 😊';
+                }
+
+                if (entrada === '2' || entrada === 'opción 2' || entrada === 'opcion 2' || entrada.includes('pago')) {
+                    this.currentContext = 'pagos';
+                    return '💳 Métodos de pago aceptados:\n\n💰 Mercado Pago (CVU Founder)\n🪙 Criptomonedas: USDC, Bitcoin (BTC), Ripple (XRP)\n💵 Transferencia Bancaria\n\n✅ Todos seguros, verificados y 100% confiables\n\n¿Necesitas detalles específicos de algún método? 😊';
+                }
+
+                if (entrada === '3' || entrada === 'opción 3' || entrada === 'opcion 3' || entrada.includes('envío')) {
+                    this.currentContext = 'envios';
+                    return '🚚 Información de Envíos:\n\n📦 Costo: Varía según ubicación\n⏱️ Tiempo: 2-7 días hábiles (Argentina)\n📍 Cobertura: Todo el país\n\n💡 Para presupuesto personalizado:\n📱 +54 9 11 5629-4134\n📧 novvohanderlybeauty@gmail.com\n\n¿De dónde necesitas envío? 📍';
+                }
+
+                if (entrada === '4' || entrada === 'opción 4' || entrada === 'opcion 4' || entrada.includes('contacto')) {
+                    this.currentContext = 'contacto';
+                    return '📱 ¡Contacta directamente con nosotros!\n\n💬 WhatsApp: +54 9 11 5629-4134 (Respuesta rápida)\n📧 Email: novvohanderlybeauty@gmail.com\n⏰ Horario: Lun-Vie 9-18hs\n🌐 Instagram: @novvohanderlybeauty\n\n¿Prefieres hablar por WhatsApp? 😊';
+                }
+
+                // ============================================
+                // 2. SALUDOS BÁSICOS
+                // ============================================
+                if (/^(hola|hi|hey|buenos días|buenos dias|buen día|buenas noches|buenas noches|¿qué tal|que tal|saludos|buenos|buenas|hola hola)$/i.test(entrada)) {
+                    return '¡Hola! 👋 Bienvenido a NOVVO Handerly Beauty\n\nSoy NOVA, tu asistente virtual disponible 24/7\n\n¿En qué puedo ayudarte?\n\n1️⃣ 📦 Ver productos\n2️⃣ 💳 Métodos de pago\n3️⃣ 🚚 Información de envíos\n4️⃣ 📱 Contacto directo\n\nEscribe el número de tu opción 😊';
+                }
+
+                if (/^(gracias|muchas gracias|thanks|thank you|grac|agradecer|agradezco)$/i.test(entrada)) {
+                    return '¡De nada! 🙏 Es un placer ayudarte.\n\n¿Hay algo más en lo que pueda asistirte? 😊';
+                }
+
+                if (/^(bien|todo bien|bien gracias|muy bien|excelente|perfecto|todo ok|ok|okey|vale|genial)$/i.test(entrada)) {
+                    return '¡Qué bueno! 😊 Me alegra que todo esté bien.\n\n¿Hay algo en lo que pueda ayudarte hoy? 😊';
+                }
+
+                if (/^(¿cómo estás|como estás|¿cómo está|como está|¿qué tal|que tal estás|cómo estamos|como estamos)$/i.test(entrada)) {
+                    return '¡Estoy genial, gracias por preguntar! 😊\n\nEstoy acá para ayudarte con todo lo que necesites sobre nuestros productos y servicios.\n\n¿En qué puedo asistirte? 😊';
+                }
+
+                // ============================================
+                // 3. PREGUNTAS ESPECÍFICAS POR CONTEXTO
+                // ============================================
+                if (this.currentContext === 'productos') {
+                    if (/precio|costo|valor|cuánto|cuanto|caro|barato/i.test(entrada)) {
+                        return '💰 Nuestros productos tienen precios muy competitivos, desde $1,500 hasta $5,000 ARS\n\n📱 Para saber los precios exactos de cada producto:\n👉 +54 9 11 5629-4134\n✉️ novvohanderlybeauty@gmail.com\n\n¿Te interesa un producto en específico? 😊';
+                    }
+
+                    if (/calidad|certificad|auténtic|original|segur/i.test(entrada)) {
+                        return '✅ Garantía de Calidad NOVVO:\n\n🏆 100% Certificados y auténticos\n✨ Ingredientes profesionales de primera calidad\n🔬 Fórmulas testeadas dermatológicamente\n🔒 Garantía de reemplazo ante cualquier defecto\n\n¿Algo más que quieras saber? 😊';
+                    }
+
+                    if (/stock|disponible|hay|agotado|cuando llega/i.test(entrada)) {
+                        return '📦 Disponibilidad de Productos:\n\n✅ La mayoría están en stock\n❌ Algunos pueden estar agotados\n🔔 Puedes consultar disponibilidad específica\n\n📱 Para saber si un producto está disponible:\n👉 +54 9 11 5629-4134\n\n¿Cuál producto te interesa? 😊';
+                    }
+                }
+
+                if (this.currentContext === 'pagos') {
+                    if (/mercado|transferencia|crypto|criptomoneda|usdc|bitcoin|btc/i.test(entrada)) {
+                        return '💳 Detalles de pagos:\n\n💰 Mercado Pago: Transferencia via CVU (segura y rápida)\n🪙 USDC: Stablecoin en blockchain\n₿ Bitcoin: Criptomoneda descentralizada\n🌊 Ripple: Transacciones internacionales\n\n📱 Contacta para más info: +54 9 11 5629-4134\n\n¿Necesitas algún otro método? 😊';
+                    }
+
+                    if (/segur|confiable|safe|seguro|fraude|protec/i.test(entrada)) {
+                        return '🔒 Seguridad de Pagos:\n\n✅ Todos los métodos son seguros y verificados\n✅ Mercado Pago usa encriptación bancaria\n✅ Criptomonedas son transacciones directas\n✅ Sin intermediarios fraudulentos\n\n💯 Tu seguridad es nuestra prioridad\n\n¿Alguna otra duda? 😊';
+                    }
+                }
+
+                if (this.currentContext === 'envios') {
+                    if (/costo|precio|valor|cuánto|cuanto|caro|tarifa/i.test(entrada)) {
+                        return '💸 Costo de Envío:\n\n📦 Varía según zona:\n• CABA: $200-500\n• Gran Buenos Aires: $300-800\n• Interior: $500-2000\n\n📱 Para presupuesto exacto: +54 9 11 5629-4134\n\n¿De qué zona necesitas envío? 😊';
+                    }
+
+                    if (/tiempo|tarda|cuánto|demora|rapido|rápido/i.test(entrada)) {
+                        return '⏱️ Tiempo de Entrega:\n\n📅 Estándar: 5-7 días hábiles\n🚀 Express: 2-3 días hábiles (adicional)\n🌍 Interior: 7-14 días hábiles\n\n📱 Consulta por opciones: +54 9 11 5629-4134\n\n¿Necesitas envío rápido? 😊';
+                    }
+
+                    if (/zona|ubicación|dónde|donde|caba|buenos aires|interior|argentina/i.test(entrada)) {
+                        return '📍 Zonas de Cobertura:\n\n✅ CABA (Capital Federal)\n✅ Gran Buenos Aires\n✅ Interior de Argentina\n✅ En desarrollo: Internacional\n\n📱 Confirma tu zona: +54 9 11 5629-4134\n\n¿De dónde eres? 😊';
+                    }
+                }
+
+                if (this.currentContext === 'contacto') {
+                    if (/whatsapp|whats|chat|conversa|mensaje/i.test(entrada)) {
+                        return '💬 WhatsApp Directo:\n\n📱 Número: +54 9 11 5629-4134\n⏰ Respuesta: En minutos\n⏲️ Horario: Lun-Vie 9-18hs\n🌙 Fuera de horario: Responderemos pronto\n\n¡Haz click para escribir! 😊';
+                    }
+
+                    if (/email|correo|mail|enviar|escribir/i.test(entrada)) {
+                        return '📧 Email:\n\n✉️ novvohanderlybeauty@gmail.com\n⏰ Respuesta: 24 horas\n\n¿Asunto de tu email? 😊';
+                    }
+
+                    if (/instagram|redes|social|ig|follow/i.test(entrada)) {
+                        return '🌐 Redes Sociales:\n\n📸 Instagram: @novvohanderlybeauty\n👍 Síguenos para:\n• Nuevos productos\n• Ofertas exclusivas\n• Tips de belleza\n\n¿Quieres seguirnos? 😊';
+                    }
+
+                    if (/horario|hora|cuando|atienden|disponible/i.test(entrada)) {
+                        return '⏰ Horario de Atención:\n\n📞 WhatsApp: Lun-Vie 9-18hs\n📧 Email: Respuesta en 24hs\n🌙 Consultas urgentes: +54 9 11 5629-4134\n\n¿Necesitas ayuda urgente? 😊';
+                    }
+                }
+
+                // ============================================
+                // 4. PALABRAS CLAVE GENERALES
+                // ============================================
                 const palabrasClaveYRespuestas = {
-                    'producto|productos|cual|cuales|que venden|que vendes|catálogo|catalogo|linea|lineas': 
-                        '📦 Tenemos cosméticos capilares premium:\n• ✨ Alisados profesionales\n• 💎 Reparación profunda\n• 🌟 Brillo extremo\n• 🧴 Tratamientos nutritivos\n\n¿Cuál te interesa conocer más? 😊',
-                    
-                    'quien|quienes|empresa|nosotros|nos|sobre ustedes|sobre vosotros|historia|acerca de|history|fundador|fundadores': 
-                        '👑 NOVVO Handerly Beauty es una empresa de cosméticos capilares profesionales.\n\n✨ Ofrecemos productos de salón con ingredientes premium\n💚 Misión: Belleza accesible con resultados profesionales\n🎯 Valores: Calidad, Innovación y Sostenibilidad\n\n¿Hay algo específico que quieras saber? 😊',
-                    
-                    'contacto|contactar|whatsapp|llamar|llamada|teléfono|phone|number|numero|email|correo|dirección|ubicación|support|ayuda': 
-                        '📱 ¡Contacta directamente con nosotros!\n\n💬 WhatsApp: +54 9 11 5629-4134 (Respuesta rápida)\n📧 Email: novvohanderlybeauty@gmail.com\n⏰ Horario: Lun-Vie 9-18hs\n🌐 Instagram: @novvohanderlybeauty\n\n¿Prefieres hablar por WhatsApp? 😊',
-                    
-                    'pago|pagos|métodos|metodos|mercado pago|mercadopago|tarjeta|criptomoneda|bitcoin|usdc|como pagar|como se paga|que acepta|que aceptan|aceptan': 
-                        '💳 Métodos de pago aceptados:\n\n💰 Mercado Pago (CVU Founder)\n🪙 Criptomonedas: USDC, Bitcoin (BTC), Ripple (XRP)\n💵 Transferencia Bancaria\n\n✅ Todos seguros, verificados y 100% confiables\n\n¿Necesitas más detalles? 😊',
-                    
-                    'envio|envíos|shipping|despacho|entrega|cuanto tarda|costo|precio del envio|cuanto cuesta|tiempo': 
-                        '🚚 Información de Envíos:\n\n📦 Costo: Varía según ubicación\n⏱️ Tiempo: 2-7 días hábiles (Argentina)\n📍 Cobertura: Todo el país\n\n💡 Para presupuesto personalizado:\n📱 +54 9 11 5629-4134\n\n¿De dónde enviaremos? 📍',
-                    
-                    'devolucion|devoluciones|cambio|cambiar|retorno|return|reembolso|refund|politica de devoluciones': 
+                    'devolucion|devoluciones|cambio|cambiar|retorno|return|reembolso|refund|politica': 
                         '↩️ Política de Devoluciones:\n\n⏱️ Plazo: 7 días desde la compra\n📦 Condición: Producto original, sin abrir\n💰 Envío: Costo por cuenta del cliente\n✅ Reembolso completo garantizado\n\n¿Tienes un producto para devolver? 😊',
                     
-                    'contraseña|password|olvide|olvidé|recuperar|reset|login|sesion|sesión|acceso|no puedo entrar': 
+                    'contraseña|password|olvide|olvidé|recuperar|reset|login|sesion|acceso': 
                         '🔐 Recuperación de Contraseña:\n\n1️⃣ Click en "¿Olvidaste tu contraseña?"\n2️⃣ Ingresa tu email registrado\n3️⃣ Recibe contraseña temporal al instante\n4️⃣ Inicia sesión y cámbiala en tu perfil\n\n⚠️ Válida por 24 horas\n\n¿Necesitas ayuda? 😊',
                     
-                    'promocion|promociones|descuento|descuentos|oferta|ofertas|codigo|cupón|cupones|promo|rebaja|rebajado': 
-                        '🎉 Promociones y Ofertas:\n\n📲 Síguenos en WhatsApp para ofertas EXCLUSIVAS\n🎁 Descuentos especiales para clientes recurrentes\n💎 Ofertas por volumen disponibles\n🔔 Comunícate para propuestas personalizadas\n\n¿Quieres estar informado? ¡Escríbenos! 📱',
+                    'promocion|descuento|oferta|codigo|cupón|promo|rebaja|desc': 
+                        '🎉 Promociones y Ofertas:\n\n📲 Síguenos en WhatsApp para ofertas EXCLUSIVAS\n🎁 Descuentos especiales para clientes recurrentes\n💎 Ofertas por volumen disponibles\n🔔 Propuestas personalizadas\n\n¿Quieres estar informado? 📱',
                     
-                    'calidad|certificado|certificados|original|autentico|autenticidad|seguridad|garantia': 
-                        '✅ Garantía de Calidad NOVVO:\n\n🏆 100% Certificados y auténticos\n✨ Ingredientes profesionales de primera calidad\n🔬 Fórmulas testeadas dermatológicamente\n🔒 Garantía de reemplazo ante cualquier defecto\n\n¿Alguna duda sobre nuestros productos? 😊',
+                    'quien|empresa|nosotros|historia|acerca de|fundador': 
+                        '👑 NOVVO Handerly Beauty:\n\n✨ Empresa de cosméticos capilares profesionales\n💚 Ingredientes premium de salón\n🎯 Misión: Belleza accesible con resultados profesionales\n💡 Valores: Calidad, Innovación y Sostenibilidad\n\n¿Algo más? 😊',
                     
-                    'problema|problemas|error|ayuda|help|soporte|support|bug|no funciona|no anda|issue|fallo': 
-                        '⚠️ ¿Tienes un problema?\n\n🤖 Si es sobre la plataforma:\n• Actualiza tu navegador\n• Limpia el caché (Ctrl+Shift+Supr)\n• Intenta en navegador diferente\n\n👥 Para problemas con productos:\n📱 WhatsApp: +54 9 11 5629-4134\n📧 Email: novvohanderlybeauty@gmail.com\n\n¿Qué sucede exactamente? 😊',
-                    
-                    'stock|disponible|disponibilidad|en stock|agotado|cuando llega|proximamente|hay': 
-                        '📦 Disponibilidad de Productos:\n\n✅ La mayoría están en stock\n❌ Algunos pueden estar agotados\n🔔 Puedes consultar disponibilidad específica\n\n📱 Para saber si un producto está disponible:\n👉 +54 9 11 5629-4134\n✉️ novvohanderlybeauty@gmail.com\n\n¿Qué producto te interesa? 😊',
-                    
-                    'registro|registrarse|cuenta|crear cuenta|sign up|registro nuevo usuario|nuevo usuario': 
-                        '📝 Crear tu Cuenta NOVVO:\n\n1️⃣ Click en "Crear Cuenta"\n2️⃣ Completa tus datos personales\n3️⃣ Acepta términos y privacidad\n4️⃣ ¡Listo! 🎉\n\n✅ Acceso inmediato a:\n• Ofertas exclusivas\n• Historial de compras\n• Recuperación de datos\n\n¿Necesitas ayuda para registrarte? 😊',
+                    'problema|error|bug|fallo|no funciona|ayuda': 
+                        '⚠️ ¿Tienes un problema?\n\n🤖 Plataforma:\n• Actualiza navegador\n• Limpia caché (Ctrl+Shift+Supr)\n• Intenta otro navegador\n\n👥 Productos:\n📱 +54 9 11 5629-4134\n\n¿Qué sucede? 😊',
 
-                    'hola|hi|hey|buenos dias|buenas noches|saludos|que tal':
-                        '¡Hola! 👋 Bienvenido a NOVVO Handerly Beauty\n\nSoy NOVA, tu asistente virtual disponible 24/7\n\n¿En qué puedo ayudarte?\n• 📦 Ver productos\n• 💳 Métodos de pago\n• 🚚 Información de envíos\n• 📱 Contacto directo\n\n¿Qué te interesa? 😊'
+                    'registro|registrarse|cuenta|crear cuenta|sign up': 
+                        '📝 Crear tu Cuenta:\n\n1️⃣ Click en "Crear Cuenta"\n2️⃣ Completa tus datos\n3️⃣ Acepta términos y privacidad\n4️⃣ ¡Listo! 🎉\n\n✅ Acceso a:\n• Ofertas exclusivas\n• Historial de compras\n\n¿Necesitas ayuda? 😊'
                 };
 
-                // BÚSQUEDA EN EL DICCIONARIO DE RESPUESTAS
                 for (let patrones in palabrasClaveYRespuestas) {
                     const regex = new RegExp(patrones, 'i');
-                    if (regex.test(pregunta)) {
+                    if (regex.test(entrada)) {
                         return palabrasClaveYRespuestas[patrones];
                     }
                 }
 
-                // RESPUESTA POR DEFECTO (Escalado a administración)
-                return '🤔 Pregunta interesante. No tengo una respuesta directa, ¡pero nuestro equipo está aquí para ti!\n\n📱 Contacta directamente a administración:\n\n💬 WhatsApp: +54 9 11 5629-4134 (Respuesta en minutos)\n📧 Email: novvohanderlybeauty@gmail.com\n⏰ Disponibles: Lun-Vie 9-18hs\n\n¿Hay algo más en lo que pueda asistirte? 😊';
+                // ============================================
+                // 5. RESPUESTA POR DEFECTO
+                // ============================================
+                return '🤔 Pregunta interesante. No tengo respuesta directa.\n\n📱 Nuestro equipo está aquí:\n\n💬 WhatsApp: +54 9 11 5629-4134\n📧 Email: novvohanderlybeauty@gmail.com\n⏰ Lun-Vie 9-18hs\n\n¿Necesitas algo más? 😊';
             }
         }
 
-        // INICIALIZAR CHATBOT CUANDO EL DOM ESTÉ LISTO
         document.addEventListener('DOMContentLoaded', () => {
             window.chatbotIA = new ChatbotIA();
         });
 
-        // Alternativa si el chatbot no se inicializa
         if (document.readyState === 'complete' && !window.chatbotIA) {
             window.chatbotIA = new ChatbotIA();
         }
@@ -4345,7 +4475,10 @@ Fecha: ${new Date().toLocaleString()}`;
         <div id="chatbot-container" class="chatbot-container">
             <div class="chatbot-header">
                 <span>🤖 NOVA - Asistente IA</span>
-                <button id="chatbot-close" class="chatbot-close">✕</button>
+                <div class="chatbot-header-actions">
+                    <button id="chatbot-new" class="chatbot-header-btn" title="Nuevo Chat">➕</button>
+                    <button id="chatbot-close" class="chatbot-close" title="Cerrar">✕</button>
+                </div>
             </div>
             
             <div id="chatbot-messages" class="chatbot-messages"></div>
@@ -4355,7 +4488,7 @@ Fecha: ${new Date().toLocaleString()}`;
                     type="text" 
                     id="chatbot-input" 
                     class="chatbot-input" 
-                    placeholder="Escribe tu pregunta..."
+                    placeholder="Escribe tu pregunta o número..."
                 >
                 <button id="chatbot-send" class="chatbot-send">➤</button>
             </div>

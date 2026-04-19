@@ -158,6 +158,58 @@
             color: var(--primary);
         }
 
+        /* Menú Hamburguesa */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger-btn:active {
+            transform: scale(0.95);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            gap: 0;
+            padding: 20px;
+            z-index: 999;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 12px 15px !important;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 14px !important;
+            text-align: left;
+        }
+
+        .mobile-nav a::after {
+            display: none !important;
+        }
+
+        .mobile-nav a:active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary);
+        }
+
         .header-actions {
             display: flex;
             gap: 20px;
@@ -177,6 +229,8 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .btn-icon:hover {
@@ -194,6 +248,8 @@
             font-weight: 600;
             font-size: 13px;
             transition: all 0.3s;
+            min-height: 40px;
+            min-width: 100px;
         }
 
         .btn-login:hover {
@@ -212,12 +268,14 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(5px);
+            overflow-y: auto;
         }
 
         .modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 15px;
         }
 
         .modal-content {
@@ -231,6 +289,8 @@
             animation: slideIn 0.3s ease-out;
             position: relative;
             overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-content::before {
@@ -1344,6 +1404,8 @@
             justify-content: center;
             gap: 15px;
             flex-direction: column;
+            min-height: 100px;
+            min-width: 100px;
         }
 
         .opcion-btn:hover {
@@ -1351,6 +1413,10 @@
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(29, 181, 132, 0.08) 100%);
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .opcion-btn:active {
+            transform: translateY(-5px);
         }
 
         .opcion-btn.active {
@@ -1646,34 +1712,124 @@
         }
 
         @media (max-width: 768px) {
+            /* HEADER RESPONSIVO */
             header {
-                padding: 15px 20px;
+                padding: 12px 15px;
             }
 
             .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
                 width: 100%;
             }
 
-            nav a {
-                text-align: center;
+            .logo {
+                font-size: 20px;
+                gap: 8px;
             }
 
+            .logo-text span {
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .header-actions {
+                gap: 10px;
+            }
+
+            .btn-login {
+                padding: 8px 15px;
+                font-size: 11px;
+            }
+
+            /* HERO RESPONSIVO */
             .hero {
-                padding: 60px 20px;
-                margin-top: 200px;
+                padding: 40px 15px;
+                margin-top: 140px;
+                grid-template-columns: 1fr;
+                gap: 30px;
+                min-height: auto;
             }
 
             .hero-content h1 {
-                font-size: 42px;
+                font-size: 28px;
+                line-height: 1.2;
+                margin-bottom: 15px;
             }
 
+            .hero-description {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .badge {
+                font-size: 10px;
+                padding: 8px 16px;
+                margin-bottom: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 12px 20px;
+                font-size: 12px;
+                min-height: 44px;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .scroll-indicator {
+                margin-top: 20px;
+                font-size: 11px;
+            }
+
+            /* STATS RESPONSIVO */
+            .stats {
+                padding: 40px 15px;
+                margin-top: 40px;
+            }
+
+            .stats-title {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+
+            .stat-card {
+                padding: 20px 15px;
+                border-radius: 10px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .stat-label {
+                font-size: 11px;
+            }
+
+            /* SECTIONS RESPONSIVE */
             .soluciones,
             .productos,
             .resultados,
@@ -1682,18 +1838,226 @@
             .sobre-nosotros,
             .tarifas,
             .testimonios {
-                padding: 60px 20px;
+                padding: 40px 15px;
             }
 
             .section-title {
-                font-size: 36px;
+                font-size: 24px;
+                margin-bottom: 30px;
             }
 
-            .galeria-grid {
+            .section-label {
+                font-size: 10px;
+            }
+
+            /* GRIDS RESPONSIVO */
+            .soluciones-grid,
+            .productos-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .solucion-card, 
+            .producto-card {
+                border-radius: 12px;
+            }
+
+            .solucion-image, 
+            .producto-image {
+                height: 250px;
+            }
+
+            .solucion-content, 
+            .producto-content {
+                padding: 20px;
+            }
+
+            .solucion-content h3, 
+            .producto-content h3 {
+                font-size: 18px;
+            }
+
+            .producto-desc {
+                font-size: 12px;
+            }
+
+            /* GALERÍA RESPONSIVO */
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .galeria-item {
+                aspect-ratio: 1;
+                border-radius: 10px;
+            }
+
+            /* VIDEOS RESPONSIVO */
+            .galeria-grid[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* RESULTADOS RESPONSIVO */
+            .before-after {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .before-after-image {
+                aspect-ratio: 3/4;
+            }
+
+            .resultados-slider {
+                padding: 20px;
+            }
+
+            /* TESTIMONIOS RESPONSIVO */
+            .testimonios-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .testimonio-card {
+                padding: 20px;
+            }
+
+            .testimonio-text {
+                font-size: 13px;
+            }
+
+            .testimonio-form {
+                padding: 20px;
+                grid-column: 1;
+            }
+
+            .testimonio-form h3 {
+                font-size: 16px;
+            }
+
+            /* SOBRE NOSOTROS RESPONSIVO */
+            .sobre-nosotros-content,
+            .tarifas-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .sobre-nosotros-text h2,
+            .tarifas-content h2 {
+                font-size: 28px;
+            }
+
+            .sobre-nosotros-text p,
+            .tarifas-content p {
+                font-size: 14px;
+            }
+
+            .sobre-nosotros-image,
+            .tarifas-image {
+                aspect-ratio: 3/4;
+                max-height: 400px;
+            }
+
+            /* CONTACTO RESPONSIVO */
+            .contacto-header h2 {
+                font-size: 28px;
+            }
+
+            .contacto-opciones {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+
+            .opcion-btn {
+                padding: 20px;
+                font-size: 13px;
+                min-height: 50px;
+            }
+
+            .opcion-icon {
+                font-size: 24px;
             }
 
             .contacto-form {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 20px;
+            }
+
+            .form-column h3 {
+                font-size: 14px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px 12px;
+                font-size: 14px;
+                min-height: 44px;
+            }
+
+            .form-group textarea {
+                min-height: 80px;
+            }
+
+            /* MODAL RESPONSIVO */
+            .modal-content {
+                width: 95%;
+                max-width: 100%;
+                padding: 25px 20px;
+                border-radius: 12px;
+            }
+
+            .modal-header {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+
+            .modal-header h2 {
+                font-size: 22px;
+            }
+
+            /* FORMULARIOS RESPONSIVO */
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group label {
+                font-size: 13px;
+            }
+
+            .btn-auth, .btn-enviar-testimonio, .form-submit {
+                padding: 12px 20px;
+                min-height: 44px;
+                font-size: 12px;
+            }
+
+            /* MÉTODOS DE PAGO RESPONSIVO */
+            .metodos-grid,
+            .cvus-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .metodo-card, .cvu-card {
+                padding: 20px;
+            }
+
+            /* BOTONES TOUCH FRIENDLY */
+            button, a[role="button"], input[type="button"], input[type="submit"] {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            /* FOOTER */
+            footer {
+                padding: 25px 15px;
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            /* MEJORAS PARA TABLETS PEQUEÑOS Y PHONES GRANDES */
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1701,14 +2065,113 @@
                 grid-template-columns: 1fr;
             }
 
-            .before-after {
+            .metodos-grid {
                 grid-template-columns: 1fr;
             }
 
-            .sobre-nosotros-content,
-            .tarifas-content {
+            .cvus-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+            }
+
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* EXTRA SMALL DEVICES */
+            header {
+                padding: 10px 12px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .hero {
+                padding: 30px 12px;
+                margin-top: 120px;
+            }
+
+            .hero-content h1 {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card {
+                padding: 15px 10px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .soluciones, .productos, .resultados, 
+            .galeria, .contacto, .sobre-nosotros, 
+            .tarifas, .testimonios {
+                padding: 30px 12px;
+            }
+
+            .galeria-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .contacto-opciones {
+                grid-template-columns: 1fr;
+            }
+
+            .opcion-btn {
+                padding: 15px;
+            }
+
+            .modal-content {
+                padding: 20px 15px;
+                max-width: 95vw;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 10px 16px;
+                font-size: 11px;
+            }
+
+            /* Reducir espacios */
+            .container {
+                padding: 0 12px;
+            }
+
+            /* Tabs para splash modal */
+            .tab-btn {
+                min-width: 100px !important;
+                font-size: 11px !important;
+            }
+
+            /* Modal responsivo */
+            .modal {
+                padding: 10px;
+            }
+
+            /* Formularios más grandes en móvil */
+            .form-group input,
+            .form-group textarea,
+            .btn-auth,
+            .btn-primary,
+            .btn-secondary,
+            button {
+                font-size: 16px !important;
+            }
+
+            /* Prevenir zoom innecesario en inputs */
+            input, textarea, select, button {
+                font-size: 16px;
             }
         }
 
@@ -1771,6 +2234,70 @@
             border: 2px solid var(--primary);
             object-fit: cover;
             margin-bottom: 15px;
+        }
+
+        /* VIDEOS STYLES */
+        .video-container {
+            width: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .video-container:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .video-container video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: auto;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .video-container {
+                aspect-ratio: 16/9;
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-container {
+                aspect-ratio: 16/9;
+                min-height: 200px;
+            }
         }
     </style>
 </head>
@@ -1919,7 +2446,20 @@
             <div class="header-actions">
                 <div id="user-display"></div>
                 <button class="btn-login" id="login-btn" onclick="openLoginModal()">Iniciar Sesión</button>
+                <button class="hamburger-btn" onclick="toggleMobileMenu()">☰</button>
             </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div class="mobile-nav" id="mobile-nav">
+            <a onclick="toggleMobileMenu(); document.getElementById('inicio').scrollIntoView({behavior: 'smooth'})">INICIO</a>
+            <a onclick="toggleMobileMenu(); document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">PRODUCTOS</a>
+            <a onclick="toggleMobileMenu(); document.getElementById('resultados').scrollIntoView({behavior: 'smooth'})">RESULTADOS</a>
+            <a onclick="toggleMobileMenu(); document.getElementById('galeria').scrollIntoView({behavior: 'smooth'})">FOTOS</a>
+            <a onclick="toggleMobileMenu(); document.getElementById('videos').scrollIntoView({behavior: 'smooth'})">VIDEOS</a>
+            <a onclick="toggleMobileMenu(); document.getElementById('testimonios').scrollIntoView({behavior: 'smooth'})">TESTIMONIOS</a>
+            <a onclick="toggleMobileMenu(); document.getElementById('metodos-pago').scrollIntoView({behavior: 'smooth'})">PAGOS</a>
+            <a onclick="toggleMobileMenu(); document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">CONTACTO</a>
         </div>
     </header>
 
@@ -2289,24 +2829,38 @@
         <span class="section-label">VIDEOS EN ACCION</span>
         <h2 class="section-title">productos y cabello</h2>
         
-        <div class="galeria-grid" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="galeria-item" style="aspect-ratio: auto;">
-                <video width="100%" height="auto" style="object-fit: cover; border-radius: 12px;" controls preload="metadata" crossorigin="anonymous">
-                    <source src="img/MOVIE.mp4" type="video/mp4">
-                    Tu navegador no soporta video HTML5.
-                </video>
+        <div class="videos-grid">
+            <!-- VIDEO 1 -->
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video controls preload="metadata" playsinline>
+                        <source src="img/MOVIE.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5. 
+                        <a href="img/MOVIE.mp4" target="_blank">Descarga el video aquí</a>
+                    </video>
+                </div>
             </div>
-            <div class="galeria-item" style="aspect-ratio: auto;">
-                <video width="100%" height="auto" style="object-fit: cover; border-radius: 12px;" controls preload="metadata" crossorigin="anonymous">
-                    <source src="img/video%20de%20productos.mp4" type="video/mp4">
-                    Tu navegador no soporta video HTML5.
-                </video>
+
+            <!-- VIDEO 2 -->
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video controls preload="metadata" playsinline>
+                        <source src="img/video de productos.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5. 
+                        <a href="img/video de productos.mp4" target="_blank">Descarga el video aquí</a>
+                    </video>
+                </div>
             </div>
-            <div class="galeria-item" style="aspect-ratio: auto;">
-                <video width="100%" height="auto" style="object-fit: cover; border-radius: 12px;" controls preload="metadata" crossorigin="anonymous">
-                    <source src="img/VID_20220228_095320216.mp4" type="video/mp4">
-                    Tu navegador no soporta video HTML5.
-                </video>
+
+            <!-- VIDEO 3 -->
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video controls preload="metadata" playsinline>
+                        <source src="img/VID_20220228_095320216.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5. 
+                        <a href="img/VID_20220228_095320216.mp4" target="_blank">Descarga el video aquí</a>
+                    </video>
+                </div>
             </div>
         </div>
     </section> 
@@ -2502,15 +3056,15 @@
 
                     <div class="contact-line" style="cursor: pointer;" onclick="window.open('https://wa.me/5491156294134', '_blank')">
                         <span class="contact-line-icon">👑</span>
-                        <a href="https://wa.me/5491156294134">Fundador: +54 9 11 5629-4134</a>
+                        <a href="https://wa.me/5491156294134">Fundador</a>
                     </div>
                     <div class="contact-line" style="cursor: pointer;" onclick="window.open('https://wa.me/5491151550839', '_blank')">
                         <span class="contact-line-icon">💼</span>
-                        <a href="https://wa.me/5491151550839">CEO: +54 9 11 5155-0839</a>
+                        <a href="https://wa.me/5491151550839">CEO</a>
                     </div>
                     <div class="contact-line" style="cursor: pointer;" onclick="window.open('https://wa.me/5491136718961', '_blank')">
                         <span class="contact-line-icon">📋</span>
-                        <a href="https://wa.me/5491136718961">Administrativa: +54 9 11 3671-8961</a>
+                        <a href="https://wa.me/5491136718961">Administrativa</a>
                     </div>
 
                     <div class="social-links">
@@ -2624,6 +3178,23 @@
         let currentUser = null;
         let ratingSeleccionada = 0;
         let usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        // MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobile-nav');
+            const hamburger = document.querySelector('.hamburger-btn');
+            if (mobileNav && mobileNav.classList.contains('active') && 
+                !mobileNav.contains(event.target) && 
+                !hamburger.contains(event.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
 
         // Inicializar Google Sign-In
         function initGoogleSignIn() {

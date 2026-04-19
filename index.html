@@ -2299,6 +2299,226 @@
                 min-height: 200px;
             }
         }
+
+        /* CHATBOT FLOTANTE */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chatbot-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, #d4a538 100%);
+            border: none;
+            color: var(--dark);
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.6);
+        }
+
+        .chatbot-btn.open {
+            background: linear-gradient(135deg, #1db584 0%, #15a470 100%);
+        }
+
+        .chatbot-container {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 550px;
+            background: rgba(20, 20, 20, 0.98);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+            flex-direction: column;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #d4a538 100%);
+            color: var(--dark);
+            padding: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-close {
+            background: transparent;
+            border: none;
+            color: var(--dark);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 8px;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .message-bubble.bot {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--text);
+            border-left: 3px solid var(--primary);
+        }
+
+        .message-bubble.user {
+            background: linear-gradient(135deg, var(--primary) 0%, #d4a538 100%);
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .chatbot-input-area {
+            padding: 12px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            gap: 8px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .chatbot-input::placeholder {
+            color: #666;
+        }
+
+        .chatbot-input:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .chatbot-send {
+            background: linear-gradient(135deg, var(--primary) 0%, #d4a538 100%);
+            border: none;
+            color: var(--dark);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.05);
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 0 4px;
+        }
+
+        .quick-reply-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--text);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-reply-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-widget {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chatbot-container {
+                width: calc(100vw - 30px);
+                max-width: 380px;
+                height: 480px;
+            }
+
+            .chatbot-btn {
+                width: 54px;
+                height: 54px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3833,6 +4053,172 @@ Fecha: ${new Date().toLocaleString()}`;
         });
 
         console.log('✨ NOVVO Handerly Beauty - Página cargada con éxito');
+
+        // ============================================
+        // CHATBOT CON IA - FLUJO AUTOMÁTICO
+        // ============================================
+        
+        class ChatbotIA {
+            constructor() {
+                this.isOpen = false;
+                this.messages = [];
+                this.initChatbot();
+            }
+
+            initChatbot() {
+                const chatbotBtn = document.getElementById('chatbot-btn');
+                const chatbotClose = document.getElementById('chatbot-close');
+                const chatbotSend = document.getElementById('chatbot-send');
+                const chatbotInput = document.getElementById('chatbot-input');
+
+                if (chatbotBtn) {
+                    chatbotBtn.addEventListener('click', () => this.toggleChatbot());
+                    chatbotClose.addEventListener('click', () => this.toggleChatbot());
+                    chatbotSend.addEventListener('click', () => this.sendMessage());
+                    chatbotInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') this.sendMessage();
+                    });
+                }
+
+                // Mensaje de bienvenida
+                setTimeout(() => {
+                    this.addMessage('¡Hola! 👋 Soy NOVA, tu asistente de NOVVO Handerly Beauty. ¿Cómo puedo ayudarte hoy?', 'bot');
+                }, 500);
+            }
+
+            toggleChatbot() {
+                this.isOpen = !this.isOpen;
+                const container = document.getElementById('chatbot-container');
+                const btn = document.getElementById('chatbot-btn');
+                
+                if (this.isOpen) {
+                    container.classList.add('active');
+                    btn.classList.add('open');
+                    document.getElementById('chatbot-input').focus();
+                } else {
+                    container.classList.remove('active');
+                    btn.classList.remove('open');
+                }
+            }
+
+            addMessage(text, sender) {
+                const messagesDiv = document.getElementById('chatbot-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${sender}`;
+                messageDiv.innerHTML = `<div class="message-bubble ${sender}">${text}</div>`;
+                messagesDiv.appendChild(messageDiv);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+
+            sendMessage() {
+                const input = document.getElementById('chatbot-input');
+                const message = input.value.trim();
+                
+                if (!message) return;
+
+                this.addMessage(message, 'user');
+                input.value = '';
+
+                // Simular delay de respuesta
+                setTimeout(() => {
+                    const response = this.procesarPregunta(message);
+                    this.addMessage(response, 'bot');
+                }, 800);
+            }
+
+            procesarPregunta(pregunta) {
+                pregunta = pregunta.toLowerCase();
+
+                // FLUJO DE DATOS CON PALABRAS CLAVE
+                const palabrasClaveYRespuestas = {
+                    // PRODUCTOS
+                    'producto|productos|cual|cuales|que venden|que vendes|catálogo|catalogo': 
+                        '📦 Tenemos cosméticos capilares premium:\n• Alisados profesionales\n• Reparación profunda\n• Brillo extremo\n• Tratamientos nutritivos\n\n¿Cuál te interesa? 😊',
+                    
+                    // QUIÉNES SOMOS
+                    'quien|quienes|empresa|nosotros|nos|sobre ustedes|sobre vosotros|historia|acerca de|history':
+                        '👑 NOVVO Handerly Beauty es una empresa de cosméticos capilares profesionales. Nos dedicamos a ofrecer productos de salón con ingredientes premium.\n\n✨ Misión: Belleza accesible con resultados profesionales\n💚 Valores: Calidad, Innovación y Sostenibilidad',
+                    
+                    // CONTACTOS
+                    'contacto|contactar|whatsapp|llamar|llamada|teléfono|phone|number|numero|email|correo|direccion|dirección|ubicacion|ubicación':
+                        '📱 Contáctanos:\n✉️ WhatsApp: +54 9 11 5629-4134\n📧 Email: novvohanderlybeauty@gmail.com\n⏰ Horario: Lun-Vie 9-18hs\n\n¿Necesitas algo específico? 😊',
+                    
+                    // PAGOS/MÉTODOS DE PAGO
+                    'pago|pagos|métodos|metodos|mercado pago|mercadopago|tarjeta|criptomoneda|bitcoin|usdc|como pagar|como se paga|que acepta|que aceptan':
+                        '💳 Métodos de pago disponibles:\n💰 Mercado Pago (CVU)\n🪙 Criptomonedas: USDC, Bitcoin, Ripple\n💵 Transferencia bancaria\n\n✅ Todos seguros y verificados',
+                    
+                    // ENVÍOS
+                    'envio|envíos|shipping|despacho|entrega|cuanto tarda|costo|precio del envio|cuanto cuesta':
+                        '🚚 Envíos:\n📦 Costo: Según destino\n⏱️ Tiempo: 2-7 días hábiles\n📍 Cobertura: Argentina\n\n✉️ Contacta para presupuesto personalizado',
+                    
+                    // DEVOLUCIONES
+                    'devolucion|devoluciones|cambio|cambiar|retorno|return|reembolso|refund|politica de devoluciones':
+                        '↩️ Política de devoluciones:\n⏱️ Plazo: 7 días desde la compra\n📦 Condición: Producto original sin usar\n💰 Costos: El cliente cubre envío\n\nContacta si tienes problemas 😊',
+                    
+                    // RECUPERAR CONTRASEÑA
+                    'contraseña|password|olvide|olvidé|recuperar|reset|login|sesion|sesión|acceso':
+                        '🔐 ¿Olvidaste tu contraseña?\n1. Click en "¿Olvidaste tu contraseña?"\n2. Ingresa tu email\n3. Recibe contraseña temporal\n4. Cámbiala en tu perfil\n\n⚠️ Válida 24 horas',
+                    
+                    // PROMOCIONES/DESCUENTOS
+                    'promocion|promociones|descuento|descuentos|oferta|ofertas|codigo|cupón|cupones|promo':
+                        '🎉 Nuestras ofertas:\n📲 Sigue nuestro WhatsApp para promociones exclusivas\n🎁 Descuentos especiales para clientes recurrentes\n📢 Comunícate para ofertas personalizadas',
+                    
+                    // CALIDAD/CERTIFICACIONES
+                    'calidad|certificado|certificados|original|autentico|autenticidad|seguridad':
+                        '✅ Garantía de calidad:\n🏆 Todos nuestros productos son certificados\n✨ Ingredientes profesionales 100%\n🔒 Garantía de reemplazo si hay defecto\n\n¿Más info? 😊',
+                    
+                    // PROBLEMAS/SOPORTE
+                    'problema|problemas|error|ayuda|help|soporte|support|bug|no funciona|no anda|issue':
+                        '⚠️ ¿Tienes un problema?\n\n🤖 Si es sobre la plataforma:\n• Intenta actualizar la página\n• Limpia el caché\n\n👤 Para consultas de productos:\n📱 WhatsApp: +54 9 11 5629-4134\n📧 Email: novvohanderlybeauty@gmail.com',
+                    
+                    // DISPONIBILIDAD
+                    'hay|stock|disponible|disponibilidad|en stock|agotado|cuando llega|proximamente':
+                        '📦 Disponibilidad:\n✅ La mayoría de productos están en stock\n📲 Para consultar específicamente:\n👉 WhatsApp: +54 9 11 5629-4134\n⏰ Respuesta rápida garantizada',
+                    
+                    // REGISTRO/CUENTA
+                    'registro|registrarse|cuenta|crear cuenta|sign up|registro nuevo usuario':
+                        '📝 Crear cuenta:\n1. Click en "Crear Cuenta"\n2. Completa tus datos\n3. Acepta términos y privacidad\n4. ¡Listo! 🎉\n\n✅ Acceso inmediato a ofertas exclusivas'
+                };
+
+                // BÚSQUEDA EN EL DICCIONARIO DE RESPUESTAS
+                for (let patrones in palabrasClaveYRespuestas) {
+                    const regex = new RegExp(patrones, 'i');
+                    if (regex.test(pregunta)) {
+                        return palabrasClaveYRespuestas[patrones];
+                    }
+                }
+
+                // RESPUESTA POR DEFECTO (Escalado)
+                return '🤔 Interesante pregunta. No tengo respuesta directa, pero nuestro equipo puede ayudarte mejor.\n\n📱 Contacta a administración:\n✉️ WhatsApp: +54 9 11 5629-4134\n📧 Email: novvohanderlybeauty@gmail.com\n\n¿Hay algo más en lo que pueda asistirte? 😊';
+            }
+        }
+
+        // INICIALIZAR CHATBOT
+        const chatbotIA = new ChatbotIA();
     </script>
+
+    <!-- WIDGET CHATBOT FLOTANTE -->
+    <div class="chatbot-widget">
+        <button id="chatbot-btn" class="chatbot-btn" title="Chat con IA">💬</button>
+        
+        <div id="chatbot-container" class="chatbot-container">
+            <div class="chatbot-header">
+                <span>🤖 NOVA - Asistente IA</span>
+                <button id="chatbot-close" class="chatbot-close">✕</button>
+            </div>
+            
+            <div id="chatbot-messages" class="chatbot-messages"></div>
+            
+            <div class="chatbot-input-area">
+                <input 
+                    type="text" 
+                    id="chatbot-input" 
+                    class="chatbot-input" 
+                    placeholder="Escribe tu pregunta..."
+                >
+                <button id="chatbot-send" class="chatbot-send">➤</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

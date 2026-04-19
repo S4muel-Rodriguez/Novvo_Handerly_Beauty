@@ -2481,6 +2481,10 @@
                     <label>Contraseña</label>
                     <input type="password" id="login-password" placeholder="Contraseña" required>
                 </div>
+                <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
+                    <input type="checkbox" id="remember-email" style="cursor: pointer;">
+                    <label style="margin: 0; font-size: 12px; cursor: pointer;">Recordar mi email</label>
+                </div>
                 <button type="submit" class="btn-auth">INICIAR SESIÓN</button>
 
                 <div class="divider"><span>O</span></div>
@@ -2498,16 +2502,43 @@
             <!-- RECUPERAR CONTRASEÑA FORM -->
             <form class="auth-form" id="recover-form" onsubmit="handleRecuperarContrasena(event)" style="display: none;">
                 <h3 style="text-align: center; color: var(--primary); margin-bottom: 20px;">Recuperar Contraseña</h3>
-                <p style="text-align: center; color: #aaa; font-size: 13px; margin-bottom: 20px;">Ingresa tu email registrado y te enviaremos instrucciones para recuperar tu contraseña.</p>
+                <p style="text-align: center; color: #aaa; font-size: 13px; margin-bottom: 20px;">Ingresa tu email registrado para recuperar acceso.</p>
                 <div class="form-group">
                     <label>Email Registrado</label>
                     <input type="email" id="recover-email" placeholder="tu@email.com" required>
                 </div>
-                <button type="submit" class="btn-auth">ENVIAR INSTRUCCIONES</button>
+                <button type="submit" class="btn-auth">RECUPERAR CONTRASEÑA</button>
                 <div class="auth-toggle" style="margin-top: 20px;">
                     <a onclick="mostrarLoginForm()">Volver a Iniciar Sesión</a>
                 </div>
             </form>
+
+            <!-- MOSTRAR CONTRASEÑA TEMPORAL (Modal resultado) -->
+            <div class="auth-form" id="temp-password-form" style="display: none;">
+                <h3 style="text-align: center; color: #4CAF50; margin-bottom: 15px;">✅ Contraseña Temporal Generada</h3>
+                <p style="text-align: center; color: #aaa; font-size: 13px; margin-bottom: 20px;">Aquí está tu nueva contraseña temporal. Cópiala y úsala para iniciar sesión.</p>
+                
+                <div style="background: #f5f5f5; border: 2px solid var(--primary); border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                    <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase; font-weight: bold;">Email:</div>
+                    <div style="background: white; padding: 10px; border-radius: 4px; word-break: break-all; margin-bottom: 15px; font-family: monospace; font-size: 13px;" id="temp-email-display"></div>
+                    
+                    <div style="font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase; font-weight: bold;">🔐 Contraseña Temporal:</div>
+                    <div style="background: white; padding: 10px; border-radius: 4px; word-break: break-all; font-family: monospace; font-size: 14px; font-weight: bold; color: #D32F2F;" id="temp-password-display"></div>
+                </div>
+
+                <button type="button" class="btn-auth" style="background: #4CAF50; margin-bottom: 10px;" onclick="copiarContrasenaTemp()">📋 COPIAR CONTRASEÑA</button>
+                
+                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; border-radius: 4px; margin-bottom: 15px; font-size: 12px;">
+                    <strong>⚠️ Importante:</strong>
+                    <ul style="margin: 8px 0; padding-left: 20px;">
+                        <li>Esta contraseña es temporal (24 horas)</li>
+                        <li>Úsala para iniciar sesión</li>
+                        <li>Cámbiala en tu perfil apenas ingreses</li>
+                    </ul>
+                </div>
+
+                <button type="button" class="btn-auth" onclick="mostrarLoginForm()" style="background: #666;">VOLVER A INICIAR SESIÓN</button>
+            </div>
 
             <!-- REGISTRO FORM -->
             <form class="auth-form" id="register-form" onsubmit="handleRegister(event)">
@@ -3108,41 +3139,13 @@
                 </h3>
                 <p style="color: #999; margin-bottom: 18px; font-size: 14px; line-height: 1.6;">Paga seguro y rápido. Aceptamos transferencias, tarjetas y billeteras virtuales.</p>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
-                    <!-- CVU 1 -->
-                    <div style="background: rgba(10, 10, 10, 0.6); border-left: 3px solid var(--primary); padding: 16px; border-radius: 8px;">
-                        <p style="color: var(--primary); font-weight: 600; font-size: 13px; margin-bottom: 6px;">👤 GUILLERMO (Fundador)</p>
-                        <div style="background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 5px; margin-bottom: 12px; font-family: 'Courier New', monospace;">
-                            <span style="color: var(--primary); font-size: 12px; word-break: break-all; font-weight: 600;">0000003100082779103094</span>
-                        </div>
-                        <div style="display: flex; gap: 8px; font-size: 13px;">
-                            <button onclick="copiarAlPortapapeles('0000003100082779103094', '✓ CVU copiado')" style="flex: 1; padding: 8px; background: var(--primary); color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.2s;">Copiar</button>
-                            <a href="https://mpago.la/pagar/0000003100082779103094" target="_blank" style="flex: 1; padding: 8px; background: var(--accent); color: #fff; border: none; border-radius: 5px; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center;">Pagar</a>
-                        </div>
+                <div style="background: rgba(10, 10, 10, 0.6); border-left: 3px solid var(--primary); padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                    <div style="background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 5px; margin-bottom: 15px; font-family: 'Courier New', monospace;">
+                        <span style="color: var(--primary); font-size: 13px; word-break: break-all; font-weight: 600;">0000003100082779103094</span>
                     </div>
-
-                    <!-- CVU 2 -->
-                    <div style="background: rgba(10, 10, 10, 0.6); border-left: 3px solid var(--primary); padding: 16px; border-radius: 8px;">
-                        <p style="color: var(--primary); font-weight: 600; font-size: 13px; margin-bottom: 6px;">👤 CAMILA (CEO)</p>
-                        <div style="background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 5px; margin-bottom: 12px; font-family: 'Courier New', monospace;">
-                            <span style="color: var(--primary); font-size: 12px; word-break: break-all; font-weight: 600;">0000003100061640122042</span>
-                        </div>
-                        <div style="display: flex; gap: 8px; font-size: 13px;">
-                            <button onclick="copiarAlPortapapeles('0000003100061640122042', '✓ CVU copiado')" style="flex: 1; padding: 8px; background: var(--primary); color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.2s;">Copiar</button>
-                            <a href="https://mpago.la/pagar/0000003100061640122042" target="_blank" style="flex: 1; padding: 8px; background: var(--accent); color: #fff; border: none; border-radius: 5px; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center;">Pagar</a>
-                        </div>
-                    </div>
-
-                    <!-- CVU 3 -->
-                    <div style="background: rgba(10, 10, 10, 0.6); border-left: 3px solid var(--primary); padding: 16px; border-radius: 8px;">
-                        <p style="color: var(--primary); font-weight: 600; font-size: 13px; margin-bottom: 6px;">🏢 NARANJA X (Administrativo)</p>
-                        <div style="background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 5px; margin-bottom: 12px; font-family: 'Courier New', monospace;">
-                            <span style="color: var(--primary); font-size: 12px; word-break: break-all; font-weight: 600;">RO20471444015.NX.ARS</span>
-                        </div>
-                        <div style="display: flex; gap: 8px; font-size: 13px;">
-                            <button onclick="copiarAlPortapapeles('RO20471444015.NX.ARS', '✓ Alias copiado')" style="flex: 1; padding: 8px; background: var(--primary); color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.2s;">Copiar</button>
-                            <a href="https://mercadopago.com.ar" target="_blank" style="flex: 1; padding: 8px; background: var(--accent); color: #fff; border: none; border-radius: 5px; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center;">Ir a MP</a>
-                        </div>
+                    <div style="display: flex; gap: 10px; font-size: 13px;">
+                        <button onclick="copiarAlPortapapeles('0000003100082779103094', '✓ CVU copiado')" style="flex: 1; padding: 10px; background: var(--primary); color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.2s; min-height: 44px;">Copiar CVU</button>
+                        <a href="https://mpago.la/pagar/0000003100082779103094" target="_blank" style="flex: 1; padding: 10px; background: var(--accent); color: #fff; border: none; border-radius: 5px; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center; min-height: 44px;">Ir a Pagar</a>
                     </div>
                 </div>
             </div>
@@ -3152,16 +3155,16 @@
                 <h3 style="color: var(--accent); font-size: 22px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
                     <span>₿</span> Criptomonedas
                 </h3>
-                <p style="color: #999; margin-bottom: 14px; font-size: 14px; line-height: 1.6;">Aceptamos USDC, Bitcoin y XRP para mayor seguridad y privacidad.</p>
+                <p style="color: #999; margin-bottom: 18px; font-size: 14px; line-height: 1.6;">Aceptamos USDC, Bitcoin (BTC) y Ripple (XRP) para mayor seguridad y privacidad.</p>
                 
                 <div style="background: rgba(29, 181, 132, 0.1); border-left: 3px solid var(--accent); padding: 16px; border-radius: 8px; margin-bottom: 15px;">
                     <p style="color: #ccc; font-size: 13px; line-height: 1.6;">
-                        <strong style="color: var(--accent);">🔗 Redes:</strong> USDC • Bitcoin (BTC) • Ripple (XRP)<br>
-                        <strong style="color: var(--accent);">📌 Nota:</strong> Contacta por WhatsApp para recibir direcciones de forma segura.
+                        <strong style="color: var(--accent);">🔗 Redes Disponibles:</strong> USDC • Bitcoin (BTC) • Ripple (XRP)<br><br>
+                        <strong style="color: var(--accent);">📌 Importante:</strong> Contacta por WhatsApp para recibir las direcciones de billetera de forma segura.
                     </p>
                 </div>
                 
-                <a href="https://wa.me/c/5491156294134?text=Hola%20NOVVO%20Handerly%20Beauty%2C%20quiero%20pagar%20con%20criptomonedas%20para%20mi%20compra." target="_blank" style="display: inline-block; padding: 12px 24px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.2s;">
+                <a href="https://wa.me/5491156294134?text=Hola%20NOVVO%20Handerly%20Beauty%2C%20quiero%20pagar%20con%20criptomonedas%20para%20mi%20compra." target="_blank" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 24px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.2s; cursor: pointer;">
                     📱 Contactar por WhatsApp
                 </a>
             </div>
@@ -3276,53 +3279,8 @@
             window.location.href = 'about:blank';
         }
 
-        // RECUPERAR CONTRASEÑA MEJORADO
-        function handleRecuperarContrasena(e) {
-            e.preventDefault();
-            const email = document.getElementById('recover-email').value;
-
-            const usuario = usuariosRegistrados.find(u => u.email === email);
-            if (!usuario) {
-                alert('No encontramos una cuenta con ese email. Verifica y vuelve a intentar.');
-                return;
-            }
-
-            // Generar nueva contraseña aleatoria
-            const nuevaContrasena = generarContraseña();
-            usuario.password = nuevaContrasena;
-            usuariosRegistrados = usuariosRegistrados.map(u => u.email === email ? usuario : u);
-            localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
-
-            const mensaje = `RECUPERACIÓN DE CONTRASEÑA - NOVVO HANDERLY BEAUTY
-
-Hola ${usuario.nombre},
-
-Hemos recibido una solicitud para recuperar tu contraseña. Tu nueva contraseña temporal es:
-
-🔐 CONTRASEÑA TEMPORAL: ${nuevaContrasena}
-
-Pasos para recuperar tu acceso:
-1. Ve a https://www.novvo.com.ar (o abre nuestro sitio)
-2. Haz clic en "Iniciar Sesión"
-3. Ingresa tu email: ${email}
-4. Ingresa esta contraseña temporal: ${nuevaContrasena}
-5. Una vez logueado, puedes cambiar tu contraseña en tu perfil
-
-IMPORTANTE: Esta contraseña expira en 24 horas. Si no fue tu solicitud, ignora este email.
-
-Saludos,
-NOVVO Handerly Beauty Team
-Fecha: ${new Date().toLocaleString()}`;
-            
-            enviarPorEmail(mensaje, 'Recuperación de Contraseña');
-            
-            alert(`✓ Email de recuperación enviado a ${email}\\n\\nTienes una contraseña temporal válida por 24 horas.\\n\\nRevisa tu bandeja de entrada (o spam).`);
-            mostrarLoginForm();
-            document.getElementById('recover-email').value = '';
-            closeLoginModal();
-        }
-
-        function generarContrasena(length = 12) {
+        // FUNCIONES AUXILIARES
+        function generarContraseña(length = 12) {
             const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
             let password = '';
             for (let i = 0; i < length; i++) {
@@ -3356,6 +3314,13 @@ Fecha: ${new Date().toLocaleString()}`;
             document.getElementById('auth-modal').classList.add('active');
             document.getElementById('login-form').classList.add('active');
             document.getElementById('register-form').classList.remove('active');
+            
+            // Cargar email recordado
+            const recordedEmail = localStorage.getItem('recordedEmail');
+            if (recordedEmail) {
+                document.getElementById('login-email').value = recordedEmail;
+                document.getElementById('remember-email').checked = true;
+            }
         }
 
         function closeLoginModal() {
@@ -3372,6 +3337,14 @@ Fecha: ${new Date().toLocaleString()}`;
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
+            const rememberEmail = document.getElementById('remember-email').checked;
+
+            // Guardar o limpiar email recordado
+            if (rememberEmail) {
+                localStorage.setItem('recordedEmail', email);
+            } else {
+                localStorage.removeItem('recordedEmail');
+            }
 
             // Permitir login de prueba
             if (email === 'prueba@novvo.com' && password === 'Novvo123') {
@@ -3682,12 +3655,26 @@ Fecha: ${new Date().toLocaleString()}`;
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('register-form').style.display = 'none';
             document.getElementById('recover-form').style.display = 'block';
+            document.getElementById('temp-password-form').style.display = 'none';
         }
 
         function mostrarLoginForm() {
             document.getElementById('login-form').style.display = 'block';
             document.getElementById('register-form').style.display = 'none';
             document.getElementById('recover-form').style.display = 'none';
+            document.getElementById('temp-password-form').style.display = 'none';
+        }
+
+        function copiarContrasenaTemp() {
+            const contraseña = document.getElementById('temp-password-display').textContent;
+            const email = document.getElementById('temp-email-display').textContent;
+            const texto = `Email: ${email}\nContraseña: ${contraseña}`;
+            
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('✅ Credenciales copiadas al portapapeles\n\n📧 Email: ' + email + '\n🔑 Contraseña: ' + contraseña);
+            }).catch(err => {
+                alert('Error al copiar. Cópialo manualmente:\n\n' + texto);
+            });
         }
 
         function handleRecuperarContrasena(e) {
@@ -3696,18 +3683,81 @@ Fecha: ${new Date().toLocaleString()}`;
 
             const usuario = usuariosRegistrados.find(u => u.email === email);
             if (!usuario) {
-                alert('No encontramos una cuenta con ese email. Verifica y vuelve a intentar.');
+                alert('❌ No encontramos una cuenta con ese email.\n\nVerifica el email e intenta de nuevo.');
                 return;
             }
 
-            const mensaje = `SOLICITUD DE RECUPERACIÓN DE CONTRASEÑA:\n\nEmail: ${email}\nContraseña registrada: ${usuario.password}\n\nFecha de solicitud: ${new Date().toLocaleString()}`;
+            // Generar contraseña temporal
+            const nuevaContrasena = generarContraseña();
+            usuario.password = nuevaContrasena;
+            usuariosRegistrados = usuariosRegistrados.map(u => u.email === email ? usuario : u);
+            localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
+
+            // Mostrar modal con contraseña temporal
+            document.getElementById('temp-email-display').textContent = email;
+            document.getElementById('temp-password-display').textContent = nuevaContrasena;
             
-            enviarPorEmail(mensaje, 'Recuperación de Contraseña');
+            // Cambiar vista
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('recover-form').style.display = 'none';
+            document.getElementById('temp-password-form').style.display = 'block';
+
+            // Intentar enviar email por si acaso (pero sin bloquear)
+            intentarEnviarEmailRecuperacion(email, usuario.nombre, nuevaContrasena);
             
-            alert(`Hemos enviado instrucciones de recuperación a ${email}. Por favor, revisa tu bandeja de entrada.`);
-            mostrarLoginForm();
             document.getElementById('recover-email').value = '';
-            closeLoginModal();
+        }
+
+        function intentarEnviarEmailRecuperacion(email, nombre, contraseña) {
+            // Intenta enviar por email, pero NO bloquea si falla
+            try {
+                const mensaje = `🔐 RECUPERACIÓN DE CONTRASEÑA - NOVVO HANDERLY BEAUTY
+
+Hola ${nombre},
+
+Recibimos una solicitud para recuperar tu contraseña. Aquí están tus nuevas credenciales:
+
+📧 EMAIL: ${email}
+🔑 CONTRASEÑA TEMPORAL: ${contraseña}
+
+📝 PASOS PARA ACCEDER:
+1. Abre la web de NOVVO Handerly Beauty
+2. Haz clic en "Iniciar Sesión"
+3. Ingresa tu email: ${email}
+4. Ingresa tu contraseña temporal: ${contraseña}
+5. Una vez dentro, ve a tu perfil y cambia tu contraseña
+
+⚠️ IMPORTANTE:
+- Esta contraseña es temporal (válida 24 horas)
+- Por seguridad, cámbiala apenas ingreses
+- Si no solicitaste esto, contacta a nuestro equipo
+
+📱 CONTACTO:
+WhatsApp: +54 9 11 5629-4134
+Email: novvohanderlybeauty@gmail.com
+
+Saludos,
+NOVVO Handerly Beauty Team
+Fecha: ${new Date().toLocaleString()}`;
+                
+                // Intentar con FormSpree
+                fetch('https://formspree.io/f/mbjbqzlb', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        message: mensaje,
+                        tipo: 'Recuperación de Contraseña',
+                        email: email
+                    }),
+                    headers: { 'Content-Type': 'application/json' }
+                }).catch(() => {
+                    // Si falla FormSpree, silenciosamente continúa
+                    // El usuario ya tiene la contraseña en pantalla
+                });
+            } catch (error) {
+                // Silenciosamente continúa si hay error
+                console.log('Email service unavailable, but password is displayed on screen');
+            }
         }
 
         // TÉRMINOS Y CONDICIONES
